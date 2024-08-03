@@ -10,10 +10,9 @@ SRCS	= ft_abs.c ft_alnum.c ft_atoi.c ft_bzero.c ft_calloc.c \
 		  ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_nbrlen.c ft_unbrlen.c \
 		  ft_putunbr_fd.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 		  ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c \
-		  ft_lstsize.c ft_strdelchr.c ft_strnchr.c ft_printf.c \
-		  ft_printf_utils.c ft_printf_utils2.c ft_printf_utils3.c ft_printf_utils4.c \
-		  ft_printf_utils5.c ft_lstdelone.c ft_count_words.c ft_strchr_i.c ft_get_next_line.c \
-		  ft_minf.c ft_maxf.c ft_mind.c ft_maxd.c ft_atol.c ft_atol_base.c ft_atohex.c ft_str_in_trim.c
+		  ft_lstsize.c ft_strdelchr.c ft_strnchr.c ft_str_in_trim.c \
+		  ft_lstdelone.c ft_count_words.c ft_strchr_i.c ft_atol.c \
+		  ft_minf.c ft_maxf.c ft_mind.c ft_maxd.c ft_atol_base.c ft_atohex.c
 OBJS	= $(SRCS:.c=.o)
 NAME	= libft.a
 CFLAGS	= -Wall -Wextra -Werror

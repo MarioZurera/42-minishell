@@ -6,14 +6,24 @@
 /*   By: mzurera- <mzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 23:17:30 by mzurera-          #+#    #+#             */
-/*   Updated: 2024/08/03 23:29:33 by mzurera-         ###   ########.fr       */
+/*   Updated: 2024/08/04 00:31:50 by mzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char **argv, char **envp)
+#include "ft_minishell.h"
+
+int	main(int argc, char **argv, char **envp)
 {
-    (void) argc;
-    (void) argv;
-    (void) envp;
-    return (0);
+	char	prompt[1024];
+	string	line;
+
+	(void) argc;
+	(void) argv;
+	(void) envp;
+	bzero(prompt, 1024);
+	getcwd(prompt, 1024);
+	ft_strlcat(prompt, " > ", 1024);
+	line = get_next_line(prompt);
+	free(line);
+	return (0);
 }

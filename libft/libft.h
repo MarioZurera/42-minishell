@@ -6,7 +6,7 @@
 /*   By: mzurera- <mzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 18:10:23 by mzurera-          #+#    #+#             */
-/*   Updated: 2024/08/02 17:58:47 by mzurera-         ###   ########.fr       */
+/*   Updated: 2024/08/04 00:29:44 by mzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,13 @@
 # include <stddef.h>
 # include <stdarg.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
-# endif /* BUFFER_SIZE */
+typedef char	*string;
 
-# ifndef FD_LIMIT
-#  define FD_LIMIT 256
-# endif /* FD_LIMIT */
-
-typedef enum e_bool
-{
-	false,
-	true
-}	t_bool;
+// typedef enum e_bool
+// {
+// 	false,
+// 	true
+// }	t_bool;
 
 typedef struct s_list
 {
@@ -628,49 +622,7 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 
-/**
- * @brief Print the format string in the standard output.
- * Replacing the flags using the following paramters.
- * @param format The string used to print text and convert the parameters.
- * @return The number of bytes printed into the standard output.
- */
-int				ft_printf(const char *format, ...);
-
-/**
- * @brief Read a line from a file descriptor.
- * @param fd The file descriptor.
- * @return The line read from the file descriptor.
- * @note The line is ended by a '\\n'.
-*/
-char			*get_next_line(int fd);
-
 int    ft_count_words(const char *str);
 
-
-/* Utility ft_printf functions. */
-
-int				eval_conversion(const char *format, int *pos, va_list arg);
-int				eval_char(va_list arg, t_conversion *data);
-int				eval_string(va_list arg, t_conversion *data);
-int				eval_pointer(va_list arg, t_conversion *data);
-int				eval_decimal(va_list arg, t_conversion *data);
-int				eval_unsigned(va_list arg, t_conversion *data);
-int				eval_hexlow(va_list arg, t_conversion *data);
-int				eval_hexup(va_list arg, t_conversion *data);
-int				eval_percentage(t_conversion *data);
-
-int				print_hex(unsigned long int n, char letter);
-void			get_lengths(char *flags, va_list arg,
-					unsigned int *length, int *prec);
-int				ft_conversion(const char *format, int *pos, va_list arg,
-					t_conversion *data);
-int				padding(int length, char c);
-int				ft_hexlen(unsigned long n);
-int				check_flags(char *flags, char *valid_flags);
-int				ignore_flags(char *flags);
-void			add_n(int *n_print, int res);
-void			print_sign(int d, int *n_print, char *flags);
-void			print_sign_u(int *n_print, char *flags);
-int				has_sign(char *flags);
 
 #endif /* LIBFT_H */
