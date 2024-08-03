@@ -6,7 +6,7 @@
 /*   By: mzurera- <mzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 23:17:41 by mzurera-          #+#    #+#             */
-/*   Updated: 2024/08/04 01:34:36 by mzurera-         ###   ########.fr       */
+/*   Updated: 2024/08/04 01:55:53 by mzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ static int	ft_count_tokens(const string line)
 			new_word = false;
 		}
 		else if (isspace(line[i]))
+		{
 			new_word = true;
+			i++;
+		}
 		else
 			i++;
 	}
@@ -79,7 +82,7 @@ t_token	*tokenize(string line)
 		return (NULL);
 	index = 0;
 	i = 0;
-	j = -1;
+	j = 0;
 	while (line[i])
 	{
 		op_len = isoperator(line, i);
@@ -95,14 +98,14 @@ t_token	*tokenize(string line)
 			i += op_len;
 			j = -1;
 		}
-		else if (line[i] && !isspace(line[i]))
+		else if (line[i] && !ft_isspace(line[i]))
 		{
 			if (j < 0)
 				j = i;
 			i++;
 			
 		}
-		else
+		else if (ft_isspace(line[i]))
 		{
 			tokens[index].op = WORD;
 			tokens[index++].value = ft_substr(line, j, i - j);
@@ -110,5 +113,11 @@ t_token	*tokenize(string line)
 			i++;
 		}
 	}
+	if (j >= 0)
+	{
+		tokens[index].op = WORD;
+		tokens[index++].value = ft_substr(line, j, i - j);
+	}
+	tokens[index].op = END;
 	return (tokens);
 }
