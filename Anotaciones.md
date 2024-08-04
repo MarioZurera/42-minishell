@@ -17,4 +17,5 @@
 
 
 ### Here Docs
-Los here_docs (cmd << EOF) expanden siempre variabes a no ser que lleven una comilla doble o simple en el delimitador, independientemente de donde las lleve. Tampoco lleva comillas al terminar el here_doc.
+ - Los here_docs (cmd << EOF) expanden siempre variabes a no ser que lleven una comilla doble o simple en el delimitador, independientemente de donde las lleve. Tampoco lleva comillas al terminar el here_doc.
+ - Si el delimitador es una variable $HOME, no se expande y se acaba el here_doc con el delimitador tal y como se escribió.
