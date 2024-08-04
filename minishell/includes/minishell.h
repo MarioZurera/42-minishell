@@ -6,18 +6,21 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:35 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/04 02:01:32 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/04 17:22:57 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-// *** Structures ***
-# include "types.h"
+// *** Colors ***
+# include "colors.h"
 
 // *** Prototypes ***
 # include "functions.h"
+
+// *** Structures ***
+# include "types.h"
 
 // *** Libraries for allowed functions ***
 
@@ -66,7 +69,7 @@
 # include <term.h>
 // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 
-// *** Libraries for constant macros ***
+// *** Libraries for constants ***
 
 # include <stdbool.h>
 # include <errno.h>

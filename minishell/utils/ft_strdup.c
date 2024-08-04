@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 01:54:14 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/04 02:01:48 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/04 17:01:22 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/04 17:02:09 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "minishell.h"
 
-//TODO
+char	*ft_strdup(char *str)
+{
+	char	*new;
+	int		i;
 
-#endif /* TYPES_H */
+	if (!str)
+		return (NULL);
+	new = malloc(ft_strlen(str) + 1);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		new[i] = str[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}

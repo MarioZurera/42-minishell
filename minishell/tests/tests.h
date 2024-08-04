@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/04 02:01:58 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/04 16:52:09 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/04 18:01:07 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNCTIONS_H
-# define FUNCTIONS_H
+#ifndef TESTS_H
+# define TESTS_H
 
-//TODO
+# include "minishell.h"
 
-#endif /* FUNCTIONS_H */
+# define TEST_VERBOSE 1
+
+bool test_suite_dequoted(void);
+
+#endif
