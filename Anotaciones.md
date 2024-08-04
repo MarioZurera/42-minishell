@@ -13,3 +13,8 @@
 # Propuestas / Cambios
 - [Header] Definir constantes para todos los literales de string que se utilicen
 - [Memoria] Intentar que las variables y estructuras que existan durante todo el programa esten en el stack (no malloc, no puntero)
+
+
+
+### Here Docs
+Los here_docs (cmd << EOF) expanden siempre variabes a no ser que lleven una comilla doble o simple en el delimitador, independientemente de donde las lleve. Tampoco lleva comillas al terminar el here_doc.
