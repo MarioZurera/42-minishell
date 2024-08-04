@@ -1,0 +1,9 @@
+============================== MARIO ==============================
+
+You need to install readline
+Package: lib32readline8
+
+In 42 Linux you can install packages using homebrew
+
+Import only in the .o to .exe by -lreadline flag (importing a lib)
+
