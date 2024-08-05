@@ -6,7 +6,7 @@
 #    By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 00:35:09 by aflorido          #+#    #+#              #
-#    Updated: 2024/08/05 19:21:42 by aflorido         ###   ########.fr        #
+#    Updated: 2024/08/05 19:47:49 by aflorido         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ OBJ			= $(SRC:.c=.o)
 
 # --- Targets ---
 
-# TODO comprobar instalacion de readline,
+# TODO: comprobar instalacion de readline,
 # segun SO: usar brew o apt-get para
 # instalar readline, y añadir -lreadline -lhistory
 

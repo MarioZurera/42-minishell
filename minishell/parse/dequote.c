@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:12:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:08:22 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:47:19 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ static void	dequoted_copy(char *dq, char *str);
  * e"c"h"o" returns echo
  * "a'b'c" returns a'b'c
  * 'a"b"c' returns a"b"c
+ * 
+ * FIXME: This is useless, we lose the information of the quotes,
+ * which is not to disable the interpretation of special characters.
  */
 char	*dequote(char *str)
 {

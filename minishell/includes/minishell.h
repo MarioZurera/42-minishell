@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:35 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:38:26 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:45:04 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@
 # include <term.h>
 // tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 
-// *** Libraries for constants ***
+// *** Libraries for constants / typedefs ***
 
 # include <stdbool.h>
 # include <errno.h>
 # include <limits.h>
+# include <stddef.h>
 
 // *** All allowed functions ***
 /*
