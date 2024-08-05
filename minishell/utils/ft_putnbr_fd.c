@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:32:26 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*dup;
-	int		i;
+	long	ln;
 
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (s && s[i] != '\0')
+	ln = n;
+	if (ln == 0)
 	{
-		dup[i] = s[i];
-		++i;
+		write(fd, "0", 1);
+		return ;
 	}
-	dup[i] = '\0';
-	return (dup);
+	if (ln < 0)
+	{
+		write(fd, "-", 1);
+		ln = -ln;
+	}
+	if (ln > 9)
+		ft_putnbr_fd((int)(ln / 10), fd);
+	ft_putchar_fd(ln % 10 + '0', fd);
 }

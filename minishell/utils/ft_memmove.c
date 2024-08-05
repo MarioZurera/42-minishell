@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:30:31 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*dup;
-	int		i;
+	size_t	i;
 
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (s && s[i] != '\0')
+	if (n == 0)
+		return (dest);
+	if (dest < src)
 	{
-		dup[i] = s[i];
-		++i;
+		i = 0;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			++i;
+		}
 	}
-	dup[i] = '\0';
-	return (dup);
+	else if (dest > src)
+	{
+		i = n - 1;
+		while (i > 0)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			--i;
+		}
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+	}
+	return (dest);
 }

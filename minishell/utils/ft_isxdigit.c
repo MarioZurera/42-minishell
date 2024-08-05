@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isxdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:24:08 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+int	ft_isxdigit(int c)
 {
-	char	*dup;
-	int		i;
-
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (s && s[i] != '\0')
-	{
-		dup[i] = s[i];
-		++i;
-	}
-	dup[i] = '\0';
-	return (dup);
+	return ((c >= '0' && c <= '9')
+		|| (c >= 'a' && c <= 'f')
+		|| (c >= 'A' && c <= 'F'));
 }

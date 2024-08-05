@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 13:12:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/04 17:30:20 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:08:22 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,19 @@ static int	dequoted_len(char *str)
 	int		i;
 	char	quote;
 
-	(0) || (len = 0) || (i = 0) || (quote = 0);
+	len = 0;
+	i = 0;
+	quote = 0;
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
 		{
 			quote = str[i++];
 			while (str[i] && str[i] != quote)
-				(void)((++i) && (++len));
+			{
+				i++;
+				len++;
+			}
 		}
 		else
 			len++;
@@ -73,7 +78,9 @@ static void	dequoted_copy(char *dq, char *str)
 	int		j;
 	char	quote;
 
-	(0) || (i = 0) || (j = 0) || (quote = 0);
+	i = 0;
+	j = 0;
+	quote = 0;
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')

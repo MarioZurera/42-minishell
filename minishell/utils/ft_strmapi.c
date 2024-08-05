@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:41:12 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*dup;
-	int		i;
+	char			*res;
+	unsigned int	i;
 
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
+	res = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (res == NULL)
 		return (NULL);
 	i = 0;
-	while (s && s[i] != '\0')
+	while (s[i] != '\0')
 	{
-		dup[i] = s[i];
+		res[i] = (*f)(i, s[i]);
 		++i;
 	}
-	dup[i] = '\0';
-	return (dup);
+	res[i] = '\0';
+	return (res);
 }

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:40:45 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char	*dup;
-	int		i;
+	size_t	i;
 
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
-		return (NULL);
 	i = 0;
-	while (s && s[i] != '\0')
+	if (size > 0)
 	{
-		dup[i] = s[i];
-		++i;
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			++i;
+		}
+		dst[i] = '\0';
 	}
-	dup[i] = '\0';
-	return (dup);
+	while (src[i] != '\0')
+		++i;
+	return (i);
 }

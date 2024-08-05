@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:14 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/04 17:22:08 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:38:07 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,30 @@
 // *** Constants ***
 
 # ifndef OK
-#  define OK GREEN"OK"RESET
+#  define OK "\033[32mOK\033[0m"
 # endif
 
 # ifndef KO
-#  define KO RED"KO"RESET
+#  define KO "\033[31mKO\033[0m"
 # endif
 
 // *** Types ***
 
+typedef char	*string;
+
 // *** Structures ***
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+typedef struct s_btree
+{
+	void			*item;
+	struct s_btree	*left;
+	struct s_btree	*right;
+}	t_btree;
 
 #endif /* TYPES_H */

@@ -6,21 +6,12 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:35 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/04 17:22:57 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:38:26 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-// *** Colors ***
-# include "colors.h"
-
-// *** Prototypes ***
-# include "functions.h"
-
-// *** Structures ***
-# include "types.h"
 
 // *** Libraries for allowed functions ***
 
@@ -88,5 +79,14 @@
 	getenv, tcsetattr, tcgetattr, tgetent, tgetflag,
 	tgetnum, tgetstr, tgoto, tputs
 */
+
+// *** Colors ***
+# include "colors.h"
+
+// *** Structures ***
+# include "types.h"
+
+// *** Prototypes ***
+# include "functions.h"
 
 #endif /* MINISHELL_H */

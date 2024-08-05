@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 14:39:47 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+int	ft_atoi(const char *nptr)
 {
-	char	*dup;
+	long	num;
+	int		sign;
 	int		i;
 
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
-		return (NULL);
 	i = 0;
-	while (s && s[i] != '\0')
+	while (ft_isspace(nptr[i]))
+		++i;
+	sign = 1;
+	if (nptr[i] == '+' || nptr[i] == '-')
+		if (nptr[i++] == '-')
+			sign = -1;
+	num = 0;
+	while (ft_isdigit(nptr[i]))
 	{
-		dup[i] = s[i];
+		num *= 10;
+		num += nptr[i] - '0';
 		++i;
 	}
-	dup[i] = '\0';
-	return (dup);
+	return ((int)(num * sign));
 }

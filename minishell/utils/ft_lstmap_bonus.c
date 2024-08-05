@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 15:39:54 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:40:15 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:28:44 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strdup(const char *s)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*dup;
-	int		i;
+	t_list	*new_list;
+	t_list	*new_node;
 
-	dup = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (dup == NULL)
+	if (!f && !del)
 		return (NULL);
-	i = 0;
-	while (s && s[i] != '\0')
+	new_list = NULL;
+	while (lst)
 	{
-		dup[i] = s[i];
-		++i;
+		new_node = ft_lstnew(NULL);
+		if (new_node == NULL)
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		new_node->content = (*f)(lst->content);
+		ft_lstadd_back(&new_list, new_node);
+		lst = lst->next;
 	}
-	dup[i] = '\0';
-	return (dup);
+	return (new_list);
 }
