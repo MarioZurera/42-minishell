@@ -13,3 +13,4 @@
 # Propuestas / Cambios
 - [Header] Definir constantes para todos los literales de string que se utilicen
 - [Memoria] Intentar que las variables y estructuras que existan durante todo el programa esten en el stack (no malloc, no puntero)
+- [Makefile] Comprobar que readline esta instalado, y si no lo esta, instalarlo usando brew en 42 y apt-get en Linux
