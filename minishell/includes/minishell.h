@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:35 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:45:04 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:10:00 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@
 # include <errno.h>
 # include <limits.h>
 # include <stddef.h>
+
+// *** Libraries implicitly allowed by allowing libft ***
+
+# include <stdarg.h>
+// va_start, va_arg, va_end
 
 // *** All allowed functions ***
 /*

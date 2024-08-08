@@ -1,22 +1,28 @@
 # Parsing
 
+	-> Tokenize (Lexer)
+	-> Parse (Parser)
+	-> Expand (Expander)
+	-> Redirect IO
+	-> Execute (Executor)
+	[-> Wait for Exit Status]  
 
 ### Reglas de transformación (Transformation rules)
 -----------
-* EXP -> PL (`&&` | `||` | `;`) PL
-* EXP -> PL  
+	EXP -> PL (`&&` | `||` | `;`) PL
+	EXP -> PL  
 -----------
-* PL -> CMD `|` CMD
-* PL -> CMD
+	PL -> CMD `|` CMD
+	PL -> CMD
 -----------
-* CMD -> BIN {WS}+ RED+ (WS+ ARG+) (any number, any order)*
+	CMD -> BIN {WS}+ RED+ (WS+ ARG+) (any number, any order)*
 -----------
-* RED -> (`<`, `<<`, `>`, `>>`, `>>>`) {WS}+ WORD
-* ARG -> WORD
+	RED -> (`<`, `<<`, `>`, `>>`, `>>>`) {WS}+ WORD
+	ARG -> WORD
 -----------
-* WORD -> CMDSUB
-* WORD -> VAR
-* WORD -> STR
+	WORD -> CMDSUB
+	WORD -> VAR
+	WORD -> STR
 -----------
 ### Legend
 EXP		=== Expression

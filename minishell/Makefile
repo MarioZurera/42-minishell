@@ -6,7 +6,7 @@
 #    By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 00:35:09 by aflorido          #+#    #+#              #
-#    Updated: 2024/08/05 19:47:49 by aflorido         ###   ########.fr        #
+#    Updated: 2024/08/08 15:09:21 by aflorido         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,11 @@ RM			= rm -rf
 # --- Sources ---
 INC			= includes
 
+ENV			= free_env.c get_env.c init_env.c print_env.c set_env.c \
+	unset_env.c utils_env.c
 EXEC		= 
-PARSE 		= dequote.c
+PARSE 		= 
+PROMPT		= banner.c build_prompt.c get_prompt.c
 UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
 	ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
@@ -34,11 +37,14 @@ UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
 	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
 	ft_isspace.c ft_isxdigit.c ft_abs.c ft_putchar.c ft_putstr.c \
-	ft_strcpy.c ft_imin.c ft_imax.c ft_dmin.c ft_dmax.c
+	ft_strcpy.c ft_imin.c ft_imax.c ft_dmin.c ft_dmax.c \
+	ft_strcmp.c ft_free_all.c
 
 SRC			= main.c
+SRC			+= $(addprefix env/, $(ENV))
 SRC			+= $(addprefix exec/, $(EXEC))
 SRC			+= $(addprefix parse/, $(PARSE))
+SRC			+= $(addprefix prompt/, $(PROMPT))
 SRC			+= $(addprefix utils/, $(UTILS))
 
 OBJ			= $(SRC:.c=.o)
@@ -47,21 +53,21 @@ OBJ			= $(SRC:.c=.o)
 
 # TODO: comprobar instalacion de readline,
 # segun SO: usar brew o apt-get para
-# instalar readline, y añadir -lreadline -lhistory
+# instalar readline
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I$(INC) -c $^ -o $@
+	$(CC) $(CFLAGS) -I$(INC) -c $^ -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lreadline -lhistory
 
 clean:
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
@@ -75,5 +81,8 @@ else
 test:
 	@echo "No tests directory found"
 endif
+
+run: all
+	@clear ; ./$(NAME)
 
 .PHONY: all clean fclean re norm test

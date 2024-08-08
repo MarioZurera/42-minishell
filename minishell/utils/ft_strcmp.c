@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 00:41:11 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 14:35:43 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/08 12:49:35 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/08 12:59:07 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /**
- * main - Entry point.
- * 
- * If 1 arg is passed, start the shell.
- * If 3 args are passed and the second is "-c",
- * execute the command passed as the third argument.
- * Otherwise, print an error message.
+ * Compare two strings
+ * If either string is NULL, the behavior is undefined (likely a segfault)
+ * @return 0 if equals, positive if s1 > s2, negative if s1 < s2
  */
-int	main(int argc, char **argv, char **envp)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_ms	ms;
+	size_t	i;
 
-	(void)argc;
-	(void)argv;
-	ms.env = init_env(envp);
-	print_banner();
-	print_env(ms.env);
-	while (1)
+	i = 0;
+	while (s1[i] || s2[i])
 	{
-		ms.line = readline(get_prompt(&ms));
-		printf("line: %s\n", ms.line);
+		if ((s1[i] == '\0') || (s2[i] == '\0') || (s1[i] != s2[i]))
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		++i;
 	}
-	free_env(ms.env);
 	return (0);
 }

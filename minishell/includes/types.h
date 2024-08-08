@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:14 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:38:07 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 13:59:50 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define TYPES_H
 
 # include "colors.h"
+
+# include "banner.h"
 
 // *** Constants ***
 
@@ -25,23 +27,81 @@
 #  define KO "\033[31mKO\033[0m"
 # endif
 
-// *** Types ***
+// *** Typedefs & Enums ***
 
-typedef char	*string;
+typedef struct s_list		t_list;
+typedef struct s_btree		t_btree;
+typedef struct s_token		t_token;
+typedef struct s_env		t_env;
+typedef struct s_prompt		t_prompt;
+typedef struct s_minishell	t_ms;
+
+typedef enum e_token_type
+{
+	TT_STR,
+	TT_RED,
+}	t_token_type;
+
+/**
+ * Redirection types:
+ * 	RED_IN:		<		(input)
+ * 	RED_OUT:	>		(output)
+ * 	RED_APP:	>>		(append)
+ * 	RED_HDOC:	<<		(here document)
+ *  RED_HSTR:	<<<		(here string)
+ */
+typedef enum e_red_type
+{
+	RED_IN,
+	RED_OUT,
+	RED_APP,
+	RED_HDOC,
+	RED_HSTR,
+}	t_red_type;
 
 // *** Structures ***
 
-typedef struct s_list
+struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+};
 
-typedef struct s_btree
+struct s_btree
 {
 	void			*item;
 	struct s_btree	*left;
 	struct s_btree	*right;
-}	t_btree;
+};
+
+struct s_token
+{
+	t_token_type	type;
+	char			*value;
+};
+
+struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+};
+
+struct s_prompt
+{
+	char	*user;
+	char	*host;
+	char	*pwd;
+	char	*home;
+	char	*last_exit;
+};
+
+struct s_minishell
+{
+	char		*name;
+	t_prompt	prompt;
+	t_env		*env;
+	char		*line;
+};
 
 #endif /* TYPES_H */

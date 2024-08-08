@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/05 19:35:44 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 14:55:49 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,27 @@
 
 # include "minishell.h"
 
+// *** Env ***
+
+void	free_entry_env(t_env *env);
+void	free_env(t_env *env);
+t_env	*get_env(t_env *env, char *key);
+char	*get_env_value(t_env *env, char *key);
+t_env	*init_env(char **envp);
+void	print_env(t_env *env);
+bool	set_env(t_env **env, char *key, char *value);
+bool	unset_env(t_env **env, char *key);
+t_env	*last_env(t_env *env);
+t_env	*update_only_env(t_env *env, char *key, char *value);
+
 // *** Parse ***
 
-char	*dequote(char *str);
+void	print_banner(void);
+
+// *** Prompt ***
+
+void	build_prompt(char *prompt, t_prompt *data);
+char	*get_prompt(t_ms *ms);
 
 // *** Utils ***
 
@@ -37,6 +55,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -78,6 +97,7 @@ int		ft_imin(int a, int b);
 int		ft_imax(int a, int b);
 double	ft_dmin(double a, double b);
 double	ft_dmax(double a, double b);
+void	ft_free_all(int count, ...);
 
 // *** Utils END ***
 
