@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 14:55:49 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 21:32:25 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int		ft_imax(int a, int b);
 double	ft_dmin(double a, double b);
 double	ft_dmax(double a, double b);
 void	ft_free_all(int count, ...);
+char	*ft_or(char *s1, char *s2);
 
 // *** Utils END ***
 

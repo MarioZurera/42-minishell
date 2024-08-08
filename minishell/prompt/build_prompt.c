@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:44:01 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 14:58:02 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 21:51:47 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ void	build_prompt(char *prompt, t_prompt *data)
 	unsafe_concat(prompt, data->user);
 	unsafe_concat(prompt, "@");
 	unsafe_concat(prompt, data->host);
-	unsafe_concat(prompt, RL_RESET);
-	unsafe_concat(prompt, ":");
-	unsafe_concat(prompt, RL_BLUE);
+	unsafe_concat(prompt, RL_RESET":"RL_BLUE);
 	unsafe_concat(prompt, data->pwd);
 	unsafe_concat(prompt, RL_RESET);
 	if (ft_strcmp(data->last_exit, "0") != 0)
 		unsafe_concat(prompt, RL_GREEN);
 	else
 		unsafe_concat(prompt, RL_RED);
-	unsafe_concat(prompt, "$ ");
+	if (ft_strcmp(data->user, "root") == 0)
+		unsafe_concat(prompt, "# ");
+	else
+		unsafe_concat(prompt, "$ ");
 	unsafe_concat(prompt, RL_RESET);
 }

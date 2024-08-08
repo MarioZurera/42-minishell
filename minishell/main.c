@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:11 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 14:35:43 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 21:35:58 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
+	ft_bzero(&ms, sizeof(t_ms));
 	ms.env = init_env(envp);
 	print_banner();
-	print_env(ms.env);
+	//print_env(ms.env);
 	while (1)
 	{
-		ms.line = readline(get_prompt(&ms));
-		printf("line: %s\n", ms.line);
+		char	*prompt = get_prompt(&ms);
+		ms.line = readline(prompt);
 	}
 	free_env(ms.env);
 	return (0);

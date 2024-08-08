@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 16:55:14 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 14:31:17 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:12:05 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
  * Readline colors are surrounded by \001 and \002 to ensure
  * that the cursor is placed correctly after the prompt
  */
+
 # define RL_RESET	"\001\033[0m\002"
 # define RL_BLACK	"\001\033[30m\002"
 # define RL_RED		"\001\033[31m\002"
