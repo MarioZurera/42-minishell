@@ -15,7 +15,6 @@
 int	env(void)
 {
 	char	**envp;
-	int		i;
 
 	envp = environ;
 	if (!envp)
