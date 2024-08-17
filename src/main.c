@@ -39,7 +39,7 @@ int	main(int argc, char **argv, char **envp)
 	line = get_next_line(prompt);
 	tokens = tokenize(line);
 	print_tokens(tokens);
-	cd("/proc/self/../../home/../home/maniel73/.");
+	cd("./.././42-minishell/../.././././42/./././.././././././42/./.");
 	//cd("../../../..");
 	getcwd(prompt, 1024);
 	printf("%s\n", prompt);

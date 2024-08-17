@@ -19,7 +19,6 @@ static char	*concat_element(char *pwd, const char *element)
 	int		i;
 	int		j;
 
-	printf("%s\n", element);
 	len = ft_strlen(pwd);
 	if (strncmp(element, ".", len) == 0)
 		return (pwd);
