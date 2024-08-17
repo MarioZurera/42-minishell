@@ -123,7 +123,7 @@ int	cd(char	*new_route)
 	pwd = getcwd(pwd, 0);
 	if (pwd == NULL)
 		return (1);
-	if (new_route == NULL || new_route[0] == '\0' || new_route[0] == '~')
+	if (new_route == NULL || new_route[0] == '\0')
 		return (change_to_home(pwd));
 	if (new_route[0] == '-' && new_route[1] == '\0')
 		return (change_to_oldpwd(pwd));
