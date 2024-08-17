@@ -12,7 +12,7 @@
 
 #include "ft_minishell.h"
 
-int	ms_exit(void)
+int	ms_exit(t_ms *ms)
 {
-	exit(0);
+	exit(ms->last_exit_code);
 }
