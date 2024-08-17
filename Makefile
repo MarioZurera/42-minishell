@@ -12,7 +12,7 @@
 
 # COMMANDS #
 CC				= clang
-CFLAGS			= -Wall -Wextra -Werror # -g -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address
 RM				= rm -f
 RM_DIR			= rm -rf
 

@@ -36,4 +36,6 @@ string	get_next_line(const char *prompt);
 
 t_token	*tokenize(string line);
 
+int		cd(char *new_route);
+
 #endif /* FT_MINISHELL */
