@@ -30,7 +30,7 @@ typedef struct	s_token
 typedef struct	s_minishell
 {
 
-}	s_ms;
+}	t_ms;
 
 string	get_next_line(const char *prompt);
 

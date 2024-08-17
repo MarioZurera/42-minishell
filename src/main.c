@@ -12,7 +12,7 @@
 
 #include "ft_minishell.h"
 
-void	print_tokens(t_token *tokens) {
+void	print_tokens(const t_token *tokens) {
     for (int i = 0; tokens[i].op != END; i++) {
         printf("Token %d: ", i);
         if (tokens[i].op == WORD) {
