@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_prompt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 09:29:38 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 21:40:53 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 18:01:31 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static void	read_env_to_prompt(t_ms *ms)
 {
 	ft_free_all(5, ms->prompt.user, ms->prompt.host, ms->prompt.pwd,
 		ms->prompt.home, ms->prompt.last_exit);
-	ms->prompt.user = ft_strdup(get_env_value(ms->env, "USER"));
-	ms->prompt.host = ft_strdup(get_env_value(ms->env, "HOSTNAME"));
+	ms->prompt.user = ft_strdup(getenv("USER"));
+	ms->prompt.host = ft_strdup(getenv("HOSTNAME"));
 	if (ms->prompt.host == NULL)
 		ms->prompt.host = ft_strdup("minishell");
-	ms->prompt.pwd = ft_strdup(get_env_value(ms->env, "PWD"));
-	ms->prompt.home = ft_strdup(get_env_value(ms->env, "HOME"));
-	ms->prompt.last_exit = ft_strdup(get_env_value(ms->env, "?"));
+	ms->prompt.pwd = ft_strdup(getenv("PWD"));
+	ms->prompt.home = ft_strdup(getenv("HOME"));
+	ms->prompt.last_exit = ft_strdup(getenv("?"));
 	if (ms->prompt.last_exit == NULL)
 		ms->prompt.last_exit = ft_strdup("0");
 }

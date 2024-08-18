@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 12:48:03 by mzurera-          #+#    #+#             */
-/*   Updated: 2024/08/16 22:00:50 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 20:21:34 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*concat_path(char *pwd, char *param)
 	return (pwd);
 }
 
-static int	change_path(char *pwd, char *new_pwd, t_ms ms)
+static int	change_path(char *pwd, char *new_pwd)
 {
 	int	res;
 
@@ -77,32 +77,32 @@ static int	change_path(char *pwd, char *new_pwd, t_ms ms)
 	res = chdir(new_pwd);
 	if (res == 0)
 	{
-		ft_setenv("OLDPWD", pwd, ms);
-		ft_setenv("PWD", new_pwd, ms);
+		set_env("OLDPWD", pwd, 1);
+		set_env("PWD", new_pwd, 1);
 	}
 	free(pwd);
 	free(new_pwd);
 	return (res < 0);
 }
 
-static int change_to_home(char *pwd, t_ms ms)
+static int change_to_home(char *pwd)
 {
 	char	*home;
 
 	home = getenv("HOME");
 	if (home == NULL)
 		return (1);
-	return (change_path(pwd, ft_strdup(home), ms));
+	return (change_path(pwd, ft_strdup(home)));
 }
 
-static int change_to_oldpwd(char *pwd, t_ms ms)
+static int change_to_oldpwd(char *pwd)
 {
 	char	*oldpwd;
 
 	oldpwd = getenv("HOME");
 	if (oldpwd == NULL)
 		return (1);
-	return (change_path(pwd, ft_strdup(oldpwd), ms));
+	return (change_path(pwd, ft_strdup(oldpwd)));
 }
 
 int	cd(char	**argv, t_ms ms)
@@ -111,14 +111,15 @@ int	cd(char	**argv, t_ms ms)
 	char	*pwd;
 	char	*new_pwd;
 
+	(void)ms;
 	pwd = NULL;
 	getcwd(pwd, 0);
 	if (pwd == NULL)
 		return (1);
 	if (argv == NULL || argv[0] == NULL || argv[1] == NULL || argv[1] == '~')
-		return (change_to_home(pwd, ms));
+		return (change_to_home(pwd));
 	if (argv[1] == '-')
-		return (change_to_oldpwd(ms, pwd));
+		return (change_to_oldpwd(pwd));
 	new_pwd = ft_strdup(pwd);
 	if (new_pwd == NULL)
 	{
@@ -126,5 +127,5 @@ int	cd(char	**argv, t_ms ms)
 		return (1);
 	}
 	new_pwd = concat_path(new_pwd, argv[1]);
-	return (change_path(pwd, new_pwd, ms));
+	return (change_path(pwd, new_pwd));
 }
