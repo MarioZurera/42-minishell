@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:14 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 13:59:50 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:24:47 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 typedef struct s_list		t_list;
 typedef struct s_btree		t_btree;
 typedef struct s_token		t_token;
-typedef struct s_env		t_env;
 typedef struct s_prompt		t_prompt;
 typedef struct s_minishell	t_ms;
 
@@ -80,13 +79,6 @@ struct s_token
 	char			*value;
 };
 
-struct s_env
-{
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-};
-
 struct s_prompt
 {
 	char	*user;
@@ -100,7 +92,6 @@ struct s_minishell
 {
 	char		*name;
 	t_prompt	prompt;
-	t_env		*env;
 	char		*line;
 };
 

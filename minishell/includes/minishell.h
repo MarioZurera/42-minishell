@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:35 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 14:10:00 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:31:52 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@
 	getenv, tcsetattr, tcgetattr, tgetent, tgetflag,
 	tgetnum, tgetstr, tgoto, tputs
 */
+
+extern char	**environ;
 
 // *** Colors ***
 # include "colors.h"

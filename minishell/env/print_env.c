@@ -6,17 +6,20 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 09:50:47 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 10:37:29 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:25:35 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env(t_env *env)
+void	print_env(void)
 {
-	while (env != NULL)
+	int	i;
+
+	i = 0;
+	while (environ && environ[i] != NULL)
 	{
-		printf("%s=%s\n", env->key, env->value);
-		env = env->next;
+		printf("%s\n", environ[i]);
+		i++;
 	}
 }

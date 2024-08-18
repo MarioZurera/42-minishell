@@ -6,37 +6,35 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 09:44:29 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 10:09:01 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:32:35 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env	*init_env(char **envp)
+void	init_env(void)
 {
-	t_env	*env;
-	char	*eq;
-	char	*key;
-	char	*value;
+	char	**new_env;
 	int		i;
 
-	if (!envp)
-		return (NULL);
 	i = 0;
-	env = NULL;
-	while (envp[i] != NULL)
+	while (environ && environ[i] != NULL)
+		i++;
+	new_env = ft_calloc(sizeof(char *), (i + 1));
+	if (!new_env)
 	{
-		eq = ft_strchr(envp[i], '=');
-		key = ft_substr(envp[i], 0, eq - envp[i]);
-		value = ft_strdup(eq + 1);
-		if (!set_env(&env, key, value))
+		//TODO panic
+		exit(1);
+	}
+	while (environ && environ[i] != NULL)
+	{
+		new_env[i] = ft_strdup(environ[i]);
+		if (!new_env[i])
 		{
-			free(key);
-			free(value);
-			free_env(env);
-			return (NULL);
+			//TODO panic
+			exit(1);
 		}
 		i++;
 	}
-	return (env);
+	environ = new_env;
 }

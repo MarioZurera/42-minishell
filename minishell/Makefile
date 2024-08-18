@@ -6,7 +6,7 @@
 #    By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 00:35:09 by aflorido          #+#    #+#              #
-#    Updated: 2024/08/08 21:53:39 by aflorido         ###   ########.fr        #
+#    Updated: 2024/08/18 16:34:51 by aflorido         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ RM			= rm -rf
 # --- Sources ---
 INC			= includes
 
-ENV			= free_env.c get_env.c init_env.c print_env.c set_env.c \
-	unset_env.c utils_env.c
+BUILTIN		= cd.c
+ENV			= free_env.c init_env.c print_env.c set_env.c \
+	unset_env.c
 EXEC		= 
 PARSE 		= 
 PROMPT		= banner.c build_prompt.c get_prompt.c
@@ -41,6 +42,7 @@ UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_strcmp.c ft_free_all.c ft_or.c
 
 SRC			= main.c
+SRC			+= $(addprefix builtin/, $(BUILTIN))
 SRC			+= $(addprefix env/, $(ENV))
 SRC			+= $(addprefix exec/, $(EXEC))
 SRC			+= $(addprefix parse/, $(PARSE))
@@ -74,16 +76,8 @@ re: fclean all
 norm:
 	@norminette $(SRC) $(INC)
 
-# If tests directory exists, add file tests/tests.mk to the Makefile
-ifneq ($(wildcard tests),)
-include tests/tests.mk
-else
-test:
-	@echo "No tests directory found"
-endif
-
 # I don't like this rule, but it's useful for now
 run: all
 	@clear ; ./$(NAME)
 
-.PHONY: all clean fclean re norm test run
+.PHONY: all clean fclean re norm run

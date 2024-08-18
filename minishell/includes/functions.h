@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 21:32:25 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:43:32 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,11 @@
 
 // *** Env ***
 
-void	free_entry_env(t_env *env);
-void	free_env(t_env *env);
-t_env	*get_env(t_env *env, char *key);
-char	*get_env_value(t_env *env, char *key);
-t_env	*init_env(char **envp);
-void	print_env(t_env *env);
-bool	set_env(t_env **env, char *key, char *value);
-bool	unset_env(t_env **env, char *key);
-t_env	*last_env(t_env *env);
-t_env	*update_only_env(t_env *env, char *key, char *value);
+void	free_env(void);
+void	*init_env(void);
+void	print_env(void);
+int		set_env(char *key, char *value, int ow);
+int		unset_env(char *key);
 
 // *** Parse ***
 
