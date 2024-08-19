@@ -19,7 +19,7 @@ RM			= rm -rf
 # --- Sources ---
 INC			= includes
 
-BUILTIN		= cd.c
+BUILTIN		= cd.c exit.c pwd.c env.c
 ENV			= free_env.c init_env.c print_env.c set_env.c \
 	unset_env.c
 EXEC		= 

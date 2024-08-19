@@ -93,6 +93,7 @@ struct s_minishell
 	char		*name;
 	t_prompt	prompt;
 	char		*line;
+	int			last_exit_code;
 };
 
 #endif /* TYPES_H */

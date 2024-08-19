@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_or.c                                            :+:      :+:    :+:   */
+/*   env.c                                               :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mzurera- <mzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 21:31:39 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 21:50:40 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/16 12:48:03 by mzurera-          #+#    #+#             */
+/*   Updated: 2024/08/16 14:23:40 by mzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/**
- * ft_or returns the first non-NULL string
- */
-char	*ft_or(char *s1, char *s2)
+int	env(void)
 {
-	if (s1)
-		return (s1);
-	return (s2);
+    char	**envp;
+
+    envp = environ;
+    if (!envp)
+        return (1);
+    while (envp)
+        printf("%s\n", *(envp++));
+    return (0);
 }
