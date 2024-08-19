@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:35 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/18 15:31:52 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:49:06 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@
 	tgetnum, tgetstr, tgoto, tputs
 */
 
-extern char	**environ;
-
 // *** Colors ***
 # include "colors.h"
 
@@ -96,5 +94,7 @@ extern char	**environ;
 
 // *** Prototypes ***
 # include "functions.h"
+
+extern char	**environ;
 
 #endif /* MINISHELL_H */

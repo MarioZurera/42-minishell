@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 18:20:41 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 18:20:47 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/19 18:47:55 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/19 18:48:03 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@
  * @param sep the separator, please don't use '\0'
  * @return the malloc'ed new string
  */
-char    *ft_strjoin_sep(char *key, char *value, char sep)
+char	*ft_strjoin_sep(char *key, char *value, char sep)
 {
-    char    *new_entry;
-    int     keylen;
-    int     vallen;
+	char	*new_entry;
+	int		keylen;
+	int		vallen;
 
-    keylen = ft_strlen(key);
-    vallen = ft_strlen(value);
-    new_entry = malloc(sizeof(char) * (keylen + vallen + 2));
-    if (new_entry == NULL)
-        return (NULL);
-    ft_strcpy(new_entry, key);
-    new_entry[keylen] = sep;
-    ft_strcpy(new_entry + keylen + 1, value);
-    return (new_entry);
+	keylen = ft_strlen(key);
+	vallen = ft_strlen(value);
+	new_entry = malloc(sizeof(char) * (keylen + vallen + 2));
+	if (new_entry == NULL)
+		return (NULL);
+	ft_strcpy(new_entry, key);
+	new_entry[keylen] = sep;
+	ft_strcpy(new_entry + keylen + 1, value);
+	return (new_entry);
 }
