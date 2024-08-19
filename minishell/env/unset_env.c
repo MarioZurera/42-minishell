@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:40:22 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 17:20:18 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 22:15:59 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	unset_env(char *key)
 	int		keylen;
 	char	**new_env;
 
-	if (!key || !getenv(key))
+	if (!key || getenv(key) == NULL)
 		return (0);
 	keylen = ft_strlen(key);
 	envlen = 0;

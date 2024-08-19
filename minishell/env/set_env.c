@@ -6,11 +6,32 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 09:54:01 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 19:43:44 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 22:00:01 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	update_env(char *key, char *value)
+{
+	int		keylen;
+	int		i;
+
+	keylen = ft_strlen(key);
+	i = 0;
+	while (environ && environ[i])
+	{
+		if (ft_strncmp(environ[i], key, keylen) == 0
+			&& environ[i][keylen] == '=')
+		{
+			free(environ[i]);
+			environ[i] = ft_strjoin_sep(key, value, '=');
+			return (environ[i] != NULL);
+		}
+		i++;
+	}
+	return (0);
+}
 
 /**
  * set_env will add a new key-value pair to the environment
@@ -19,26 +40,15 @@
 int	set_env(char *key, char *value, int ow)
 {
 	int		update;
-	int		i;
 
 	update = getenv(key) != NULL;
 	if (!key || !value || (!ow && update))
 		return (0);
-	i = 0;
-	//TODO not very happy with this implementation
 	if (update)
+		return (update_env(key, value));
+	else
 	{
-		while (environ && environ[i])
-		{
-			if (ft_strncmp(environ[i], key, ft_strlen(key)) == 0
-				&& environ[i][ft_strlen(key)] == '=')
-			{
-				free(environ[i]);
-				environ[i] = ft_strjoin_sep(key, value, '=');
-				return (1);
-			}
-			i++;
-		}
+		//TODO realloc environ when key does not exist, add key=value
+		return (0);
 	}
-	//TODO realloc environ when key does not exist, add key=value
 }

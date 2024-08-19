@@ -3,15 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   banner.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 19:45:09 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 15:17:16 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 22:13:04 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BANNER_H
 # define BANNER_H
+
+/**
+ * Banner for the minishell
+ * height: 8
+ * width: 58
+ * 
+ * There are 3 versions of the banner:
+ * 1. plain text
+ * 2. colored text
+ * 3. colored text, line by line 0-7 for easy integration
+ *  with the containing square
+ */
+
+# define BANNER_HEI 8
+# define BANNER_WID 57
 
 # define BANNER \
 "88888888888 8888888b.         d8888  .d8888b.  888    888\n\
@@ -32,5 +47,29 @@
    \033[36m 888    \033[32m 888 T88b    \033[31m d88P   888      \033[34m \"888\033[33m 888    888\033[0m\n\
    \033[36m 888    \033[32m 888  T88b  \033[31m d8888888888\033[34m Y88b  d88P\033[33m 888    888\033[0m\n\
    \033[36m 888    \033[32m 888   T88b\033[31m d88P     888 \033[34m \"Y8888P\" \033[33m 888    888\033[0m\n"
+
+# define COLOR_BANNER_0 \
+"\033[36m88888888888\033[32m 8888888b.        \033[31m d8888 \033[34m .d8888b. \033[33m 888    888\033[0m"
+
+# define COLOR_BANNER_1 \
+"   \033[36m 888    \033[32m 888   Y88b      \033[31m d88888\033[34m d88P  Y88b\033[33m 888    888\033[0m"
+
+# define COLOR_BANNER_2 \
+"   \033[36m 888    \033[32m 888    888     \033[31m d88P888\033[34m Y88b.     \033[33m 888    888\033[0m"
+
+# define COLOR_BANNER_3 \
+"   \033[36m 888    \033[32m 888   d88P    \033[31m d88P 888 \033[34m \"Y888b.  \033[33m 8888888888\033[0m"
+
+# define COLOR_BANNER_4 \
+"   \033[36m 888    \033[32m 8888888P\"    \033[31m d88P  888    \033[34m \"Y88b.\033[33m 888    888\033[0m"
+
+# define COLOR_BANNER_5 \
+"   \033[36m 888    \033[32m 888 T88b    \033[31m d88P   888      \033[34m \"888\033[33m 888    888\033[0m"
+
+# define COLOR_BANNER_6 \
+"   \033[36m 888    \033[32m 888  T88b  \033[31m d8888888888\033[34m Y88b  d88P\033[33m 888    888\033[0m"
+
+# define COLOR_BANNER_7 \
+"   \033[36m 888    \033[32m 888   T88b\033[31m d88P     888 \033[34m \"Y8888P\" \033[33m 888    888\033[0m"
 
 #endif /* BANNER_H */

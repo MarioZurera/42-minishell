@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 19:21:44 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 21:48:58 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // *** Env ***
 
 void	free_env(void);
-void	*init_env(void);
+void	init_env(void);
 void	print_env(void);
 int		set_env(char *key, char *value, int ow);
 int		unset_env(char *key);
@@ -100,7 +100,7 @@ char	*ft_or(char *s1, char *s2);
 
 // *** Utils END ***
 
-// *** Function Aliases ***
+// *** Function "Aliases" ***
 
 size_t	len(const char *s);
 
