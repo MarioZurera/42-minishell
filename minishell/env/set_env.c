@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 09:54:01 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 18:55:55 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:43:44 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	set_env(char *key, char *value, int ow)
 				&& environ[i][ft_strlen(key)] == '=')
 			{
 				free(environ[i]);
-				environ[i] = join_key_value(key, value);
+				environ[i] = ft_strjoin_sep(key, value, '=');
 				return (1);
 			}
 			i++;

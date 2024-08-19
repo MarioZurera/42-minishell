@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 18:49:41 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:21:44 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	print_banner(void);
 
 void	build_prompt(char *prompt, t_prompt *data);
 char	*get_prompt(t_ms *ms);
+int		tty_cols(void);
+int		tty_rows(void);
 
 // *** Utils ***
 

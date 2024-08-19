@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   tty_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 14:39:22 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 19:11:18 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/19 19:19:40 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/19 19:20:01 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/**
- * @param str A number is valid if it contains optional sign followed by +1 digits.
- * @return int as a boolean
- */
-int	ft_isnumber(const char *str)
+int tty_cols(void)
 {
-	if (str == NULL)
-		return (0);
-	if (str[0] == '-' || str[0] == '+')
-		str++;
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
+    struct winsize w;
+
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == -1)
+        return (0);
+    return (w.ws_col);
+}
+
+int tty_rows(void)
+{
+    struct winsize w;
+
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == -1)
+        return (0);
+    return (w.ws_row);
 }
