@@ -6,28 +6,11 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 09:54:01 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/18 20:41:28 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:28:16 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static char	*join_key_value(char *key, char *value)
-{
-	char	*new_env;
-	int		keylen;
-	int		valuelen;
-
-	keylen = ft_strlen(key);
-	valuelen = ft_strlen(value);
-	new_env = malloc(sizeof(char) * (keylen + valuelen + 2));
-	if (new_env == NULL)
-		return (NULL);
-	ft_strlcpy(new_env, key, keylen + 1);
-	new_env[keylen] = '=';
-	ft_strlcpy(new_env + keylen + 1, value, valuelen + 1);
-	return (new_env);
-}
 
 /**
  * set_env will add a new key-value pair to the environment

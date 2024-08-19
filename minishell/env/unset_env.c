@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:40:22 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/18 20:17:06 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:20:18 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	unset_env(char *key)
 	envlen = 0;
 	while (environ && environ[envlen])
 		envlen++;
-	new_env = ft_calloc(envlen + 1, sizeof(char *));
+	new_env = ft_calloc(envlen, sizeof(char *));
 	if (!new_env)
 		return (0);
 	i = 0;
