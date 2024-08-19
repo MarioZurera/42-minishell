@@ -24,8 +24,11 @@ int	main(int argc, char **argv)
 {
 	t_ms	ms;
 
+	// len len = ft_strlen;
+
 	(void)argc;
 	(void)argv;
+	printf("%d", len("Helloooo"));
 	ft_bzero(&ms, sizeof(t_ms));
 	init_env();
 	print_banner();

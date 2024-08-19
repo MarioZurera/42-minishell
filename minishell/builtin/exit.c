@@ -12,7 +12,9 @@
 
 #include "minishell.h"
 
-int	ms_exit(t_ms *ms)
+int	ms_exit(t_ms *ms, char *param)
 {
-   exit(ms->last_exit_code);
+   if (!param)
+      exit(ms->last_exit_code);
+   // if (!)
 }

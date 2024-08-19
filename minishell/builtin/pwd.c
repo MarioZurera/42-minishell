@@ -12,9 +12,14 @@
 
 #include "minishell.h"
 
-int	ms_exit(t_ms *ms, char *param)
+int	pwd(void)
 {
-    if (!param)
-        exit(ms->last_exit_code);
-    if (!)
+    char	*pwd;
+
+    pwd = getcwd(NULL, 0);
+    if (pwd == NULL)
+        return (1);
+    printf("%s\n", pwd);
+    free(pwd);
+    return (0);
 }
