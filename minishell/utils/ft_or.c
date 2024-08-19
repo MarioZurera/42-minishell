@@ -13,7 +13,7 @@
 #include "minishell.h"
 
 /**
- * ft_or returns the first non NULL string
+ * ft_or returns the first non-NULL string
  */
 char	*ft_or(char *s1, char *s2)
 {
