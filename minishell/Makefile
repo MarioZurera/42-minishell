@@ -6,7 +6,7 @@
 #    By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 00:35:09 by aflorido          #+#    #+#              #
-#    Updated: 2024/08/19 18:24:23 by aflorido         ###   ########.fr        #
+#    Updated: 2024/08/19 18:41:17 by aflorido         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
 	ft_isspace.c ft_isxdigit.c ft_abs.c ft_putchar.c ft_putstr.c \
 	ft_strcpy.c ft_imin.c ft_imax.c ft_dmin.c ft_dmax.c \
-	ft_strcmp.c ft_free_all.c ft_or.c ft_strjoin_sep.c
+	ft_strcmp.c ft_free_all.c ft_or.c ft_strjoin_sep.c \
+	ft_isnumber.c
 
 SRC			= main.c
 SRC			+= $(addprefix builtin/, $(BUILTIN))
