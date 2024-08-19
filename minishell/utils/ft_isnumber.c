@@ -13,12 +13,13 @@
 #include "minishell.h"
 
 /**
- *
- * @param str A number is valid if contains digits. <br /> The first element is a sign or a digit.
+ * @param str A number is valid if it contains optional sign followed by +1 digits.
  * @return int as a boolean
  */
 int	ft_isnumber(const char *str)
 {
+	if (str == NULL)
+		return ((unsigned long long int)(int) NULL);
 	if (str[0] == '-' || str[0] == '+')
 		str++;
 	while (*str)
