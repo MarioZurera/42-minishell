@@ -3,28 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mzurera- <mzurera-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 12:48:03 by mzurera-          #+#    #+#             */
-/*   Updated: 2024/08/18 20:21:34 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:23:40 by mzurera-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*concat_element(char *pwd, char *element)
+static char	*concat_element(char *pwd, const char *element)
 {
 	char	*new_pwd;
 	int		len;
 	int		i;
-	
+	int		j;
+
 	len = ft_strlen(pwd);
 	if (strncmp(element, ".", len) == 0)
 		return (pwd);
 	if (strncmp(element, "..", len) == 0 && len > 1)
 	{
-		new_pwd = ft_strrchr(element, '/');
-		new_pwd[0] = '\0';
+		new_pwd = ft_strrchr(pwd, '/');
+		new_pwd[1] = '\0';
+		if (new_pwd != pwd)
+			new_pwd[0] = '\0';
 		return (pwd);
 	}
 	new_pwd = malloc(sizeof(char) * (len + ft_strlen(element) + 2));
@@ -33,9 +36,11 @@ static char	*concat_element(char *pwd, char *element)
 	i = -1;
 	while (++i < len)
 		new_pwd[i] = pwd[i];
-	new_pwd[i] = '/';
-	while (++i < sizeof(new_pwd) - 1)
-		new_pwd[i] = element[i - len - 1];
+	if (new_pwd[i - 1] != '/')
+		new_pwd[i++] = '/';
+	j = 0;
+	while ((unsigned long) j < ft_strlen(element))
+		new_pwd[i++] = element[j++];
 	new_pwd[i] = '\0';
 	free(pwd);
 	return (new_pwd);
@@ -45,9 +50,12 @@ static char	*concat_path(char *pwd, char *param)
 {
 	int	i;
 	int j;
-	
+
 	if (param[0] == '/')
+	{
 		pwd[1] = '\0';
+		param++;
+	}
 	i = 0;
 	j = 0;
 	while (param[i])
@@ -77,8 +85,8 @@ static int	change_path(char *pwd, char *new_pwd)
 	res = chdir(new_pwd);
 	if (res == 0)
 	{
-		set_env("OLDPWD", pwd, 1);
-		set_env("PWD", new_pwd, 1);
+		setenv("OLDPWD", pwd, 1);
+		setenv("PWD", new_pwd, 1);
 	}
 	free(pwd);
 	free(new_pwd);
@@ -105,20 +113,19 @@ static int change_to_oldpwd(char *pwd)
 	return (change_path(pwd, ft_strdup(oldpwd)));
 }
 
-int	cd(char	**argv, t_ms ms)
+int	cd(char	*new_route)
 {
-	char	**envp;
 	char	*pwd;
 	char	*new_pwd;
+	char	*new_route_copy;
 
-	(void)ms;
 	pwd = NULL;
-	getcwd(pwd, 0);
+	pwd = getcwd(pwd, 0);
 	if (pwd == NULL)
 		return (1);
-	if (argv == NULL || argv[0] == NULL || argv[1] == NULL || argv[1] == '~')
+	if (new_route == NULL || new_route[0] == '\0')
 		return (change_to_home(pwd));
-	if (argv[1] == '-')
+	if (new_route[0] == '-' && new_route[1] == '\0')
 		return (change_to_oldpwd(pwd));
 	new_pwd = ft_strdup(pwd);
 	if (new_pwd == NULL)
@@ -126,6 +133,8 @@ int	cd(char	**argv, t_ms ms)
 		free(pwd);
 		return (1);
 	}
-	new_pwd = concat_path(new_pwd, argv[1]);
+	new_route_copy = ft_strdup(new_route);
+	new_pwd = concat_path(new_pwd, new_route_copy);
+	free(new_route_copy);
 	return (change_path(pwd, new_pwd));
 }
