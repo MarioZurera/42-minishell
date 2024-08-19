@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 14:39:22 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 19:06:45 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:11:18 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int	ft_isnumber(const char *str)
 {
 	if (str == NULL)
-		return ((unsigned long long int)(int) NULL);
+		return (0);
 	if (str[0] == '-' || str[0] == '+')
 		str++;
 	while (*str)
