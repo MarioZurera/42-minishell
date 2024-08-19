@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_env.c                                         :+:      :+:    :+:   */
+/*   proc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 09:47:13 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 22:18:01 by aflorido         ###   ########.fr       */
+/*   Created: 2024/08/19 22:21:58 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/19 23:07:07 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /**
- * free_env will free the memory allocated for the entire env
+ * init_proc_info will initialize information
+ * read from /proc/self/status and from /etc/passwd
+ * 
+ * Specifically the fields:
+ * - pid
+ * - ppid
+ * - uid
+ * - gid
+ * - euid
+ * - egid
+ * - username
+ * - groupname
+ * 
  */
-void	free_env(void)
+void    init_proc_info(t_ms *ms)
 {
-	int	i;
-
-	i = 0;
-	while (environ && environ[i] != NULL)
-	{
-		free(environ[i]);
-		i++;
-	}
-	free(environ);
-	environ = NULL;
+    (void)ms;
+    // TODO: implement this function
 }

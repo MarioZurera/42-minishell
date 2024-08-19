@@ -6,7 +6,7 @@
 #    By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 00:35:09 by aflorido          #+#    #+#              #
-#    Updated: 2024/08/19 19:22:11 by aflorido         ###   ########.fr        #
+#    Updated: 2024/08/19 23:06:45 by aflorido         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ENV			= free_env.c init_env.c print_env.c set_env.c \
 EXEC		= 
 PARSE 		= 
 PROMPT		= banner.c build_prompt.c get_prompt.c \
-	tty_size.c
+	tty_size.c proc.c
 UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
 	ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \

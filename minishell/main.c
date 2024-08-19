@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:11 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 19:23:19 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:05:54 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,14 @@ int	main(int argc, char **argv)
 	(void)argv;
 	ft_bzero(&ms, sizeof(t_ms));
 	init_env();
+	init_proc_info(&ms);
 	print_banner();
-	//print_env();
-	printf("tty rows: %d\n", tty_rows());
-	printf("tty cols: %d\n", tty_cols());
 	while (42)
 	{
-		char	*prompt = get_prompt(&ms);
+		char	*prompt = "$>"; //get_prompt(&ms); // segfaults
 		ms.line = readline(prompt);
 		if (ms.line == NULL)
 			break ;
 	}
-	free_env();
 	return (0);
 }
