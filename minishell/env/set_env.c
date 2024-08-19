@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 09:54:01 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 18:28:16 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:55:55 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	set_env(char *key, char *value, int ow)
 	int		update;
 	int		i;
 
-	update = !!getenv(key);
+	update = getenv(key) != NULL;
 	if (!key || !value || (!ow && update))
 		return (0);
 	i = 0;
