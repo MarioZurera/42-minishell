@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   len.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 12:48:03 by mzurera-          #+#    #+#             */
-/*   Updated: 2024/08/19 18:40:43 by aflorido         ###   ########.fr       */
+/*   Created: 2023/09/11 15:49:37 by aflorido          #+#    #+#             */
+/*   Updated: 2024/08/05 19:15:45 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minishell.h"
 
-void	ms_exit(t_ms *ms, char *param)
+inline size_t	len(const char *s)
 {
-   if (!param)
-      exit(ms->last_exit_code);
-   // if (!)
+	return (ft_strlen(s));
 }

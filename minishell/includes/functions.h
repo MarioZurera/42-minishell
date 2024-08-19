@@ -100,8 +100,8 @@ char	*ft_or(char *s1, char *s2);
 
 // *** Utils END ***
 
-// Function aliases, norminette approved
+// *** Function Aliases ***
 
-typedef int(*	len)(char *);
+size_t	len(const char *s);
 
 #endif /* FUNCTIONS_H */
