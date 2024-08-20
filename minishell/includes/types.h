@@ -29,6 +29,7 @@
 
 // *** Typedefs & Enums ***
 
+typedef struct s_len_cache	t_len;
 typedef struct s_list		t_list;
 typedef struct s_btree		t_btree;
 typedef struct s_token		t_token;
@@ -59,6 +60,12 @@ typedef enum e_red_type
 }	t_red_type;
 
 // *** Structures ***
+
+struct s_len_cache
+{
+	size_t		len;
+	const char	*str;
+};
 
 struct s_list
 {

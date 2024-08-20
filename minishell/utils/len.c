@@ -13,5 +13,22 @@
 
 inline size_t	len(const char *s)
 {
-	return (ft_strlen(s));
+	static t_len	cache[6];
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < 6)
+	{
+		if (cache[i].str == s)
+			return (cache[i].len);
+		if (cache[i].str == NULL)
+			j = i;
+		i++;
+	}
+	cache[j].str = s;
+	cache[j].len = ft_strlen(s);
+	cache[(j + 1) % 6].str = NULL;
+	return (cache[j].len);
 }
