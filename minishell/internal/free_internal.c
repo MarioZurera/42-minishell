@@ -13,7 +13,7 @@
 #include "minishell.h"
 
 /**
-	* free_env will free the memory allocated for the entire env
+	* free_internal will free the memory allocated for the entire internal
 */
 void	free_internal(t_ms *ms)
 {
