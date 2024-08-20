@@ -93,6 +93,7 @@ struct s_minishell
 	char		*name;
 	t_prompt	prompt;
 	char		*line;
+	char		***internals;
 	int			last_exit_code;
 };
 

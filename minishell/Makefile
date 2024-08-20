@@ -20,8 +20,9 @@ RM			= rm -rf
 INC			= includes
 
 BUILTIN		= cd.c exit.c pwd.c env.c export.c unset.c set.c echo.c
-ENV			= free_env.c init_env.c print_env.c set_env.c \
-	unset_env.c
+ENV			= free_env.c init_env.c set_env.c unset_env.c
+INTERNAL	= free_internal.c init_internal.c set_env.c unset_internal.c \
+	get_internal.c
 EXEC		= 
 PARSE 		= 
 PROMPT		= banner.c build_prompt.c get_prompt.c \
@@ -46,6 +47,7 @@ UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 SRC			= main.c
 SRC			+= $(addprefix builtin/, $(BUILTIN))
 SRC			+= $(addprefix env/, $(ENV))
+SRC			+= $(addprefix internal/, $(INTERNAL))
 SRC			+= $(addprefix exec/, $(EXEC))
 SRC			+= $(addprefix parse/, $(PARSE))
 SRC			+= $(addprefix prompt/, $(PROMPT))
