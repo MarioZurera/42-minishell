@@ -113,7 +113,7 @@ static int change_to_oldpwd(char *pwd)
 	return (change_path(pwd, ft_strdup(oldpwd)));
 }
 
-int	cd(char	*new_route)
+int	cd(const char *new_route)
 {
 	char	*pwd;
 	char	*new_pwd;

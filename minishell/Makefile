@@ -19,7 +19,7 @@ RM			= rm -rf
 # --- Sources ---
 INC			= includes
 
-BUILTIN		= cd.c exit.c pwd.c env.c
+BUILTIN		= cd.c exit.c pwd.c env.c export.c unset.c set.c echo.c
 ENV			= free_env.c init_env.c print_env.c set_env.c \
 	unset_env.c
 EXEC		= 
@@ -41,7 +41,7 @@ UTILS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	ft_isspace.c ft_isxdigit.c ft_abs.c ft_putchar.c ft_putstr.c \
 	ft_strcpy.c ft_imin.c ft_imax.c ft_dmin.c ft_dmax.c \
 	ft_strcmp.c ft_free_all.c ft_or.c ft_strjoin_sep.c \
-	ft_isnumber.c len.c
+	ft_isnumber.c ft_atol.c len.c
 
 SRC			= main.c
 SRC			+= $(addprefix builtin/, $(BUILTIN))
