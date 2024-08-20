@@ -19,9 +19,16 @@
 
 void	free_env(void);
 void	init_env(void);
-void	print_env(void);
 int		set_env(char *key, char *value, int ow);
 int		unset_env(char *key);
+
+// *** Internal ***
+
+void	free_internal(t_ms *ms);
+void	init_internal(t_ms *ms);
+int		set_internal(char *key, char *value, t_ms *ms);
+int		get_internal(char *key);
+int		unset_internal(char *key, t_ms *ms);
 
 // *** Parse ***
 
@@ -38,10 +45,14 @@ int		tty_rows(void);
 // *** Buildins ***
 
 int		cd(const char *new_route);
+int		echo(const char **argv);
 int		env(void);
 void	ms_exit(t_ms *ms, char *param);
-int		export(const char *param);
+int		export(const char *param, t_ms *ms);
 int		pwd(void);
+int		set(t_ms *ms);
+int		set(const char **argv, t_ms *ms);
+int		unset(const char *param, t_ms *ms);
 
 // *** Utils ***
 
