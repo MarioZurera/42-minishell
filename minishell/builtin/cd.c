@@ -110,6 +110,7 @@ static int change_to_oldpwd(char *pwd)
 	oldpwd = getenv("HOME");
 	if (oldpwd == NULL)
 		return (1);
+	printf("%s\n", oldpwd);
 	return (change_path(pwd, ft_strdup(oldpwd)));
 }
 
