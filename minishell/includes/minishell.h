@@ -13,6 +13,11 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+// *** Constants ***
+# ifndef STRLEN_CACHE
+#  define STRLEN_CACHE 4096
+# endif /* STRLEN_CACHE */
+
 // *** Libraries for allowed functions ***
 
 # include <readline/readline.h>

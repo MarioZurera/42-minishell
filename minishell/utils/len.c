@@ -13,13 +13,13 @@
 
 inline size_t	len(const char *s)
 {
-	static t_len	cache[6];
+	static t_len	cache[STRLEN_CACHE];
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (i < 6)
+	while (i < STRLEN_CACHE)
 	{
 		if (cache[i].str == s)
 			return (cache[i].len);
