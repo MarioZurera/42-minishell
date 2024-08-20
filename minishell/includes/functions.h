@@ -35,6 +35,14 @@ char	*get_prompt(t_ms *ms);
 int		tty_cols(void);
 int		tty_rows(void);
 
+// *** Buildins ***
+
+int		cd(const char *new_route);
+int		env(void);
+void	ms_exit(t_ms *ms, char *param);
+int		export(const char *param);
+int		pwd(void);
+
 // *** Utils ***
 
 int		ft_isalpha(int c);
@@ -59,6 +67,8 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
+int		ft_isnumber(const char *s);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
