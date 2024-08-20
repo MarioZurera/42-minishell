@@ -14,7 +14,7 @@
 
 int	ft_atoi(const char *nptr)
 {
-	long	num;
+	int		num;
 	int		sign;
 	int		i;
 
@@ -32,5 +32,5 @@ int	ft_atoi(const char *nptr)
 		num += nptr[i] - '0';
 		++i;
 	}
-	return ((int)(num * sign));
+	return (num * sign);
 }
