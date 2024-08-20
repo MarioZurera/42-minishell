@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	unset(const char *param, t_ms ms)
+int	unset(const char *param, t_ms *ms)
 {
 	if (param == NULL || param[0] == '\0')
 		return (1);

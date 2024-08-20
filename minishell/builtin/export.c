@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	export(const char *param, t_ms ms)
+int	export(const char *param, t_ms *ms)
 {
 	char **pair;
 	int	status;
