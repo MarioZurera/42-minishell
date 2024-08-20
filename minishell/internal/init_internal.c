@@ -14,10 +14,7 @@
 
 void	init_internal(t_ms *ms)
 {
-	int		i;
-
-	i = 0;
-	ms->internals = ft_calloc(sizeof(char **), 1);
+	ms->internals = malloc(sizeof(char **) * 1);
 	if (!ms->internals)
 	{
 		//TODO panic
