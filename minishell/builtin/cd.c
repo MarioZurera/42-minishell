@@ -20,9 +20,9 @@ static char	*concat_element(char *pwd, const char *element)
 	int		j;
 
 	len = ft_strlen(pwd);
-	if (strncmp(element, ".", len) == 0)
+	if (ft_strncmp(element, ".", len) == 0)
 		return (pwd);
-	if (strncmp(element, "..", len) == 0 && len > 1)
+	if (ft_strncmp(element, "..", len) == 0 && len > 1)
 	{
 		new_pwd = ft_strrchr(pwd, '/');
 		new_pwd[1] = '\0';
