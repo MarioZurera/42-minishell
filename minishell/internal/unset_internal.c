@@ -21,13 +21,11 @@ int	unset_internal(const char *key, t_ms *ms)
 {
 	int		i;
 	int		j;
-	int		keylen;
 	int		internal_len;
 	char	***new_internal;
 
 	if (!key || get_internal(key, ms) == NULL)
 		return (0);
-	keylen = len(key);
 	internal_len = 0;
 	while (ms->internals && ms->internals[internal_len])
 		++internal_len;
@@ -38,7 +36,7 @@ int	unset_internal(const char *key, t_ms *ms)
 	j = 0;
 	while (ms->internals && ms->internals[j])
 	{
-		if (ft_strncmp(ms->internals[j][0], key, keylen) != 0)
+		if (ft_strncmp(ms->internals[j][0], key, len(key)) != 0)
 			new_internal[i++] = ms->internals[j];
 		else
 			free(ms->internals[j]);
