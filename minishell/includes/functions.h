@@ -27,7 +27,7 @@ int		unset_env(char *key);
 void	free_internal(t_ms *ms);
 void	init_internal(t_ms *ms);
 int		set_internal(const char *key, const char *value, t_ms *ms);
-int		get_internal(const char *key, t_ms *ms);
+char	*get_internal(const char *key, t_ms *ms);
 int		unset_internal(const char *key, t_ms *ms);
 
 // *** Parse ***

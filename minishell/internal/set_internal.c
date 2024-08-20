@@ -68,7 +68,7 @@ int	set_internal(const char *key, const char *value, t_ms *ms)
 
 	if (key == NULL || value == NULL || key[0] == '\0' || value[0] == '\0')
 		return (0);
-	if (get_internal(key) != NULL)
+	if (get_internal(key, ms) != NULL)
 		return (update_internal(key, value, ms));
 	return (push_key(key, value, ms));
 }
