@@ -97,7 +97,7 @@ static void execute_command(t_expr *expression, t_ms *ms)
 	execve(command->cmd_name, command->argv, environ);
 }
 
-// When calling the executor should only exist t_expr in the heap.
+// Caution: Ensure heap contains only t_expr to prevent leaks.
 
 void	execute(t_expr *expression, t_ms *ms)
 {
