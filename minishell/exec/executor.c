@@ -12,6 +12,9 @@
 
 #include "minishell.h"
 
+// Caution: Ensure heap contains only t_expr to prevent leaks.
+void	execute(t_expr *expression, t_ms *ms);
+
 static int	execute_builtin(const t_command *command, t_ms *ms)
 {
 	if (ft_strncmp(command->cmd_name, "cd", 2) == 0)
@@ -96,8 +99,6 @@ static void execute_command(t_expr *expression, t_ms *ms)
 	free_expression(expression);
 	execve(command->cmd_name, command->argv, environ);
 }
-
-// Caution: Ensure heap contains only t_expr to prevent leaks.
 
 void	execute(t_expr *expression, t_ms *ms)
 {
