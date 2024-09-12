@@ -23,7 +23,7 @@ BUILTIN		= cd.c exit.c pwd.c env.c export.c unset.c set.c echo.c
 ENV			= free_env.c init_env.c set_env.c unset_env.c
 INTERNAL	= free_internal.c init_internal.c set_internal.c unset_internal.c \
 	get_internal.c
-EXEC		= 
+EXEC		= executor.c
 PARSE 		= 
 PROMPT		= banner.c build_prompt.c get_prompt.c \
 	tty_size.c proc.c
