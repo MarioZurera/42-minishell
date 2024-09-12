@@ -30,14 +30,16 @@
 // *** Typedefs & Enums *** //
 
 typedef struct s_list		t_list;
-typedef struct s_token		t_token;
 typedef struct s_prompt		t_prompt;
+typedef struct s_token		t_token;
+typedef struct s_command	t_command;
+typedef struct s_expr		t_expr;
 typedef struct s_minishell	t_ms;
 
 typedef enum e_token_type
 {
-	TT_STR,
-	TT_RED,
+	TT_STR, // ???
+	TT_RED, // Why so cryptic?
 }	t_token_type;
 
 typedef enum e_red_type
@@ -49,18 +51,21 @@ typedef enum e_red_type
 	RED_HSTR,	//	<<< (here string)
 }	t_red_type;
 
+typedef enum e_expr_type
+{
+	EXPR_COMMAND,	// echo "123"
+	EXPR_PIPE,		// |
+	EXPR_END,		// ;
+	EXPR_AND,		// &&
+	EXPR_OR			// ||
+}	t_expr_type;
+
 // *** Structures *** //
 
 struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-};
-
-struct s_token
-{
-	t_token_type	type;
-	char			*value;
 };
 
 struct s_prompt
@@ -70,6 +75,26 @@ struct s_prompt
 	char	*pwd;
 	char	*home;
 	char	*last_exit;
+};
+
+struct s_token
+{
+	t_token_type	type;
+	char			*value;
+};
+
+struct s_command
+{
+	char			**argv;
+	char			*cmd_name;
+	int				fd_in;
+	int				fd_out;
+};
+
+struct s_expr
+{
+	t_expr_type		type;
+	t_command		*command;
 };
 
 struct s_minishell
