@@ -15,14 +15,14 @@
 
 # include "minishell.h"
 
-// *** Env ***
+// *** Env *** //
 
 void	free_env(void);
 void	init_env(void);
 int		set_env(char *key, char *value, int ow);
 int		unset_env(char *key);
 
-// *** Internal ***
+// *** Internal *** //
 
 void	free_internal(t_ms *ms);
 void	init_internal(t_ms *ms);
@@ -30,11 +30,11 @@ int		set_internal(const char *key, const char *value, t_ms *ms);
 char	*get_internal(const char *key, t_ms *ms);
 int		unset_internal(const char *key, t_ms *ms);
 
-// *** Parse ***
+// *** Parse *** //
 
 void	print_banner(void);
 
-// *** Prompt ***
+// *** Prompt *** //
 
 void    init_proc_info(t_ms *ms);
 void	build_prompt(char *prompt, t_prompt *data);
@@ -42,7 +42,11 @@ char	*get_prompt(t_ms *ms);
 int		tty_cols(void);
 int		tty_rows(void);
 
-// *** Buildins ***
+// *** Executor *** //
+
+
+
+// *** Buildins *** //
 
 int		cd(const char *new_route);
 int		echo(const char **argv);
@@ -54,7 +58,7 @@ int		set(t_ms *ms);
 int		set(const char **argv, t_ms *ms);
 int		unset(const char *param, t_ms *ms);
 
-// *** Utils ***
+// *** Utils *** //
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -120,9 +124,9 @@ double	ft_dmax(double a, double b);
 void	ft_free_all(int count, ...);
 char	*ft_or(char *s1, char *s2);
 
-// *** Utils END ***
+// *** Utils END *** //
 
-// *** Function "Aliases" ***
+// *** Function "Aliases" *** //
 
 size_t	len(const char *s);
 

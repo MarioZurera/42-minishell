@@ -17,7 +17,7 @@
 
 # include "banner.h"
 
-// *** Constants ***
+// *** Constants *** //
 
 # ifndef OK
 #  define OK "\033[32mOK\033[0m"
@@ -27,10 +27,9 @@
 #  define KO "\033[31mKO\033[0m"
 # endif
 
-// *** Typedefs & Enums ***
+// *** Typedefs & Enums *** //
 
 typedef struct s_list		t_list;
-typedef struct s_btree		t_btree;
 typedef struct s_token		t_token;
 typedef struct s_prompt		t_prompt;
 typedef struct s_minishell	t_ms;
@@ -41,36 +40,21 @@ typedef enum e_token_type
 	TT_RED,
 }	t_token_type;
 
-/**
- * Redirection types:
- * 	RED_IN:		<		(input)
- * 	RED_OUT:	>		(output)
- * 	RED_APP:	>>		(append)
- * 	RED_HDOC:	<<		(here document)
- *  RED_HSTR:	<<<		(here string)
- */
 typedef enum e_red_type
 {
-	RED_IN,
-	RED_OUT,
-	RED_APP,
-	RED_HDOC,
-	RED_HSTR,
+	RED_IN,		//	<	(input)
+	RED_OUT,	//	>	(output)
+	RED_APP,	//	>>	(append)
+	RED_HDOC,	//	<<	(here document)
+	RED_HSTR,	//	<<< (here string)
 }	t_red_type;
 
-// *** Structures ***
+// *** Structures *** //
 
 struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-};
-
-struct s_btree
-{
-	void			*item;
-	struct s_btree	*left;
-	struct s_btree	*right;
 };
 
 struct s_token
