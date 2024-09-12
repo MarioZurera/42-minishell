@@ -21,6 +21,8 @@ static int	count_words(const char *s, char c)
 	words = 0;
 	in_word = 0;
 	i = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i] != '\0')
 	{
 		if (!in_word && s[i] != c)
