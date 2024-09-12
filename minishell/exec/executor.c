@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	execute_builtin(const t_command *command, t_ms *ms)
+static int	execute_builtin(const t_command *command, t_ms *ms)
 {
 	if (ft_strncmp(command->cmd_name, "cd", 2) == 0)
 		cd(command->argv[1]);
@@ -35,7 +35,7 @@ int	execute_builtin(const t_command *command, t_ms *ms)
 	return (1);
 }
 
-char	*try_fullname(const char *cmd_name, char **paths, int index)
+static char	*try_fullname(const char *cmd_name, char **paths, int index)
 {
 	char	*possible_fullname;
 
@@ -50,7 +50,7 @@ char	*try_fullname(const char *cmd_name, char **paths, int index)
 	return (possible_fullname);
 }
 
-int	find_command(char **cmd_name)
+static int	find_command(char **cmd_name)
 {
 	char	*fullname;
 	char	**paths;
@@ -68,7 +68,7 @@ int	find_command(char **cmd_name)
 	return (fullname != NULL);
 }
 
-void execute_command(t_expr *expression, t_ms *ms)
+static void execute_command(t_expr *expression, t_ms *ms)
 {
 	int			pid;
 	t_command	*command;
@@ -96,6 +96,8 @@ void execute_command(t_expr *expression, t_ms *ms)
 	free_expression(expression);
 	execve(command->cmd_name, command->argv, environ);
 }
+
+// When calling the executor should only exist t_expr in the heap.
 
 void	execute(t_expr *expression, t_ms *ms)
 {
