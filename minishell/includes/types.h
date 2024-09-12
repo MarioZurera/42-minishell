@@ -54,7 +54,7 @@ typedef enum e_red_type
 typedef enum e_expr_type
 {
 	EXPR_COMMAND,	// echo "123"
-	EXPR_PIPE,		// |
+	EXPR_PIPE,		// | (Remove in parser?)
 	EXPR_END,		// ;
 	EXPR_AND,		// &&
 	EXPR_OR			// ||
@@ -95,6 +95,7 @@ struct s_expr
 {
 	t_expr_type		type;
 	t_command		*command;
+	t_expr			*next;
 };
 
 struct s_minishell
