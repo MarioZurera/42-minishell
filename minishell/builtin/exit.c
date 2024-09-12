@@ -45,7 +45,7 @@ static int is_long(const char *s)
    return (num <= LONG_MAX && num >= LONG_MIN);
 }
 
-void	ms_exit(t_ms *ms, char *param)
+void	ms_exit(char *param, t_ms *ms)
 {
    // free_ms(ms);
    if (!param)

@@ -51,7 +51,7 @@ int		tty_rows(void);
 int		cd(const char *new_route);
 int		echo(const char **argv);
 int		env(void);
-void	ms_exit(t_ms *ms, char *param);
+void	ms_exit(char *param, t_ms *ms);
 int		export(const char *param, t_ms *ms);
 int		pwd(void);
 int		set(t_ms *ms);
