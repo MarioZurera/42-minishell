@@ -6,7 +6,7 @@
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 00:41:11 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 23:05:54 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/09/15 19:04:54 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 int	main(int argc, char **argv)
 {
 	t_ms	ms;
+	char	*line;
 
 	(void)argc;
 	(void)argv;
@@ -33,9 +34,10 @@ int	main(int argc, char **argv)
 	while (42)
 	{
 		char	*prompt = "$>"; //get_prompt(&ms); // segfaults
-		ms.line = readline(prompt);
-		if (ms.line == NULL)
+		line = readline(prompt);
+		if (line == NULL)
 			break ;
+		free(line);
 	}
 	return (0);
 }

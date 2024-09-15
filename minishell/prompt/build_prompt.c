@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_prompt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 14:44:01 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/08 21:51:47 by aflorido         ###   ########.fr       */
+/*   Updated: 2024/09/15 18:59:58 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	build_prompt(char *prompt, t_prompt *data)
 	unsafe_concat(prompt, RL_RESET":"RL_BLUE);
 	unsafe_concat(prompt, data->pwd);
 	unsafe_concat(prompt, RL_RESET);
-	if (ft_strcmp(data->last_exit, "0") != 0)
+	if (data->last_exit == 0)
 		unsafe_concat(prompt, RL_GREEN);
 	else
 		unsafe_concat(prompt, RL_RED);
