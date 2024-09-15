@@ -29,7 +29,6 @@
 
 // *** Typedefs & Enums *** //
 
-typedef struct s_list		t_list;
 typedef struct s_prompt		t_prompt;
 typedef struct s_token		t_token;
 typedef struct s_command	t_command;
@@ -53,20 +52,19 @@ typedef enum e_red_type
 
 typedef enum e_expr_type
 {
-	EXPR_COMMAND,	// echo "123"
-	EXPR_PIPE,		// | (Remove in parser?)
+	EXPR_COMMAND,	// echo "123" > "out.txt"
 	EXPR_END,		// ;
 	EXPR_AND,		// &&
-	EXPR_OR			// ||
+	EXPR_OR,		// ||
 }	t_expr_type;
 
 // *** Structures *** //
 
-struct s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-};
+}	t_list;
 
 struct s_prompt
 {
@@ -86,7 +84,7 @@ struct s_token
 struct s_command
 {
 	char			**argv;
-	char			*cmd_name;
+	char			*cmd_name; // ft_strcmp(argv[0], cmd_name); -> true
 	int				fd_in;
 	int				fd_out;
 };

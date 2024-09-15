@@ -33,6 +33,8 @@ static int	execute_builtin(const t_command *command, t_ms *ms)
 		set(command->argv, ms);
 	else if (ft_strncmp(command->cmd_name, "unset", 5) == 0)
 		unset(command->argv[1], ms);
+	else if (ft_strncmp(command->cmd_name, "", 1) == 0)
+		no_command()
 	else
 		return (0);
 	return (1);
@@ -71,7 +73,7 @@ static int	find_command(char **cmd_name)
 	return (fullname != NULL);
 }
 
-static void execute_command(t_expr *expression, t_ms *ms)
+static void	execute_command(t_expr *expression, t_ms *ms)
 {
 	int			pid;
 	t_command	*command;
@@ -84,8 +86,6 @@ static void execute_command(t_expr *expression, t_ms *ms)
 	}
 	if (execute_builtin(command, ms))
 		return ;
-	if (!find_command(&command->cmd_name))
-		return ;
 	pid = fork();
 	if (pid < 0)
 	{
@@ -93,6 +93,8 @@ static void execute_command(t_expr *expression, t_ms *ms)
 		return ;
 	}
 	if (pid > 0)
+		return ;
+	if (!find_command(&command->cmd_name))
 		return ;
 	dup2(command->fd_in, STDIN_FILENO);
 	dup2(command->fd_out, STDOUT_FILENO);
