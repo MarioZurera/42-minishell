@@ -1,19 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 01:54:08 by aflorido          #+#    #+#             */
-/*   Updated: 2024/08/19 23:06:31 by aflorido         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
 
 # include "minishell.h"
+
+void	init(t_ms *ms);
 
 // *** Env *** //
 
@@ -32,21 +22,38 @@ int		unset_internal(const char *key, t_ms *ms);
 
 // *** Parse *** //
 
-void	print_banner(void);
+t_token	*lexer(char *line, t_ms *ms);
+void	consume_token(char **line, t_token **token);
+void	add_token(t_token **token, t_token *new_token);
+
+void	consume_amp(char **line, t_token **token);
+void	consume_pipe(char **line, t_token **token);
+void	consume_lparen(char **line, t_token **token);
+void	consume_rparen(char **line, t_token **token);
+void	consume_semicolon(char **line, t_token **token);
+void	consume_single_quote(char **line, t_token **token);
+void	consume_double_quote(char **line, t_token **token);
+void	consume_reverse_quote(char **line, t_token **token);
+void	consume_gt(char **line, t_token **token);
+void	consume_lt(char **line, t_token **token);
+void	consume_string(char **line, t_token **token);
+
+t_expr	*parser(t_token *tokens, t_ms *ms);
+void	interpret_variables(t_token *tokens, t_ms *ms);
+
 
 // *** Prompt *** //
 
-void    init_proc_info(t_ms *ms);
+void	init_proc_info(t_ms *ms);
 void	build_prompt(char *prompt, t_prompt *data);
 char	*get_prompt(t_ms *ms);
 int		tty_cols(void);
 int		tty_rows(void);
+void	print_banner(void);
 
 // *** Executor *** //
 
-
-
-// *** Buildins *** //
+// *** Builtins *** //
 
 int		cd(const char *new_route);
 int		echo(const char **argv);
@@ -54,7 +61,7 @@ int		env(void);
 void	ms_exit(char *param, t_ms *ms);
 int		export(const char *param, t_ms *ms);
 int		pwd(void);
-int		set(t_ms *ms);
+int		_set(t_ms *ms);
 int		set(const char **argv, t_ms *ms);
 int		unset(const char *param, t_ms *ms);
 
@@ -123,6 +130,7 @@ double	ft_dmin(double a, double b);
 double	ft_dmax(double a, double b);
 void	ft_free_all(int count, ...);
 char	*ft_or(char *s1, char *s2);
+void	*ft_xmalloc(size_t size);
 
 // *** Utils END *** //
 

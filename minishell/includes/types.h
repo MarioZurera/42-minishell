@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 01:54:14 by aflorido          #+#    #+#             */
-/*   Updated: 2024/09/15 19:05:16 by aflorido         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef TYPES_H
 # define TYPES_H
 
@@ -41,12 +29,15 @@ typedef struct s_minishell	t_ms;
  * 	TT_DOUBLE_AMPERSAND:	&&
  * 	TT_PIPE:				|
  * 	TT_DOUBLE_PIPE:			||
- * 	TT_LPARENS:				(
- * 	TT_RPARENS:				)
+ * 	TT_LEFT_PARENTHESIS:	(
+ * 	TT_RIGHT_PARENTHESIS:	)
  *  TT_SEMICOLON:			;
- *  TT_SQUOTED:				single-quoted string
- *  TT_DQUOTED:				double-quoted string
- *  TT_REV_QUOTED:			reverse-quoted string
+ *  TT_LEFT_SQUOTE:			left single-quote (')
+ *	TT_RIGHT_SQUOTE:		right single-quote (')
+ *  TT_LEFT_DQUOTE:			left double-quote (")
+ *	TT_RIGHT_DQUOTE:		right double-quote (")
+ *  TT_LEFT_REV_QUOTED:		left reverse-quote (`)
+ *	TT_RIGHT_REV_QUOTED:	right reverse-quote (`)
  * 	TT_REDIR_OUT:			>
  * 	TT_REDIR_APPEND:		>>
  * 	TT_REDIR_IN:			<
@@ -60,17 +51,24 @@ typedef enum e_token_type
 	TT_DOUBLE_AMPERSAND,
 	TT_PIPE,
 	TT_DOUBLE_PIPE,
-	TT_PARENTHESIS,
+	TT_LEFT_PARENTHESIS,
+	TT_RIGHT_PARENTHESIS,
 	TT_SEMICOLON,
-	TT_SQUOTED,
-	TT_DQUOTED,
+	// Quotes // TODO: figure out if we handle left-right quotes separately
+	TT_LEFT_SQUOTE,
+	//TT_RIGHT_SQUOTE,
+	TT_LEFT_DQUOTE,
+	//TT_RIGHT_DQUOTE,
+	TT_LEFT_REV_QUOTE,
+	//TT_RIGHT_REV_QUOTED,
+	// Redirections
 	TT_REDIR_OUT,
 	TT_REDIR_APPEND,
 	TT_REDIR_IN,
 	TT_REDIR_HDOC,
+	// String
 	TT_STRING,
 }	t_token_type;
-
 
 typedef enum e_expr_type
 {
@@ -81,6 +79,15 @@ typedef enum e_expr_type
 }	t_expr_type;
 
 // *** Structures *** //
+
+/**
+ * List structure. Unused in the project but kept for utils functions to use.
+ */
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 struct s_prompt
 {
@@ -120,14 +127,5 @@ struct s_minishell
 	char		***internals;
 	int			last_exit_code;
 };
-
-/* Responsabilidades del parser */
-// (RECIBIR) Lista de tokens
-// interpretar variables
-// wildcard
-// setear in out archivos > < ?
-// unir comandos y argumentos ?
-// eliminar pipes
-// (RETORNAR) Lista de expresiones
 
 #endif /* TYPES_H */

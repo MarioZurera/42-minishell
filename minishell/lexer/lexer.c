@@ -1,14 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/15 17:46:33 by aflorido          #+#    #+#             */
-/*   Updated: 2024/09/15 17:47:05 by aflorido         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
+/**
+ * Tokenizes the input line into a list of tokens.
+ */
+t_token	*lexer(char *line, t_ms *ms)
+{
+	t_token	*token;
+
+	//TODO: dequote empty quotes + check for unbalanced quotes ?
+	token = NULL;
+	while (line && *line != '\0')
+	{
+		if (ft_isspace(*line))
+			++line;
+		else
+			consume_token(&line, &token);
+	}
+	return (token);
+}

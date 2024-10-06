@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/04 00:41:11 by aflorido          #+#    #+#             */
-/*   Updated: 2024/09/15 19:04:54 by aflorido         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 /**
@@ -27,10 +15,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	ft_bzero(&ms, sizeof(t_ms));
-	init_env();
-	init_proc_info(&ms);
-	print_banner();
+	init(&ms);
 	while (42)
 	{
 		char	*prompt = "$>"; //get_prompt(&ms); // segfaults
@@ -40,4 +25,14 @@ int	main(int argc, char **argv)
 		free(line);
 	}
 	return (0);
+}
+
+void	init(t_ms *ms)
+{
+	ft_bzero(ms, sizeof(t_ms));
+	//TODO: disable printing control characters (like ^C) to the terminal
+	init_env();
+	init_proc_info(ms);
+	init_internal(ms);
+	print_banner();
 }

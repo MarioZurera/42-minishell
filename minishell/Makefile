@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+         #
+#    By: aflorido <aflorido@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 00:35:09 by aflorido          #+#    #+#              #
-#    Updated: 2024/08/19 23:06:45 by aflorido         ###   ########.fr        #
+#    Updated: 2024/10/06 15:23:18 by aflorido         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,6 @@ SRC			+= $(addprefix utils/, $(UTILS))
 OBJ			= $(SRC:.c=.o)
 
 # --- Targets ---
-
-# TODO: comprobar instalacion de readline,
-# segun SO: usar brew o apt-get para
-# instalar readline
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(INC) -c $^ -o $@
