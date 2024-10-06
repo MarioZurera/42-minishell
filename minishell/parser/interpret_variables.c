@@ -68,6 +68,7 @@ void	interpret_variables(t_token *token, t_ms *ms)
 		i = 0;
 		while (curr->value && curr->value[i] != '\0')
 		{
+			//TODO: handle escaped $ and escaped \$
 			if (curr->value[i] == '$' && (i == 0 || curr->value[i - 1] != '\\'))
 				replace_variable(curr, &i, ms);
 			++i;
