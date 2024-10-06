@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_internal.c                                    :+:      :+:    :+:   */
+/*   xcalloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 09:44:29 by aflorido          #+#    #+#             */
-/*   Updated: 2024/10/06 18:00:06 by aflorido         ###   ########.fr       */
+/*   Created: 2024/10/06 17:57:29 by aflorido          #+#    #+#             */
+/*   Updated: 2024/10/06 18:01:29 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_internal(t_ms *ms)
+/**
+ * calloc with error handling (exit on failure)
+ */
+void	*xcalloc(size_t size)
 {
-	ms->internals = xmalloc(sizeof(char **));
-	ms->internals[0] = NULL;
+	void	*ptr;
+
+	ptr = xmalloc(size);
+	ft_bzero(ptr, size);
+	return (ptr);
 }

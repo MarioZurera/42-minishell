@@ -130,7 +130,7 @@ double	ft_dmin(double a, double b);
 double	ft_dmax(double a, double b);
 void	ft_free_all(int count, ...);
 char	*ft_or(char *s1, char *s2);
-void	*ft_xmalloc(size_t size);
+void	*xmalloc(size_t size);
 
 // *** Utils END *** //
 

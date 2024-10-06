@@ -32,12 +32,9 @@ typedef struct s_minishell	t_ms;
  * 	TT_LEFT_PARENTHESIS:	(
  * 	TT_RIGHT_PARENTHESIS:	)
  *  TT_SEMICOLON:			;
- *  TT_LEFT_SQUOTE:			left single-quote (')
- *	TT_RIGHT_SQUOTE:		right single-quote (')
- *  TT_LEFT_DQUOTE:			left double-quote (")
- *	TT_RIGHT_DQUOTE:		right double-quote (")
- *  TT_LEFT_REV_QUOTED:		left reverse-quote (`)
- *	TT_RIGHT_REV_QUOTED:	right reverse-quote (`)
+ *  TT_SQUOTE:				single-quote (')
+ *  TT_DQUOTE:				double-quote (")
+ *  TT_REV_QUOTED:			reverse-quote (`)
  * 	TT_REDIR_OUT:			>
  * 	TT_REDIR_APPEND:		>>
  * 	TT_REDIR_IN:			<
@@ -47,6 +44,7 @@ typedef struct s_minishell	t_ms;
 typedef enum e_token_type
 {
 	TT_DEFAULT,
+	TT_SPACE,
 	TT_AMPERSAND,
 	TT_DOUBLE_AMPERSAND,
 	TT_PIPE,
@@ -54,13 +52,10 @@ typedef enum e_token_type
 	TT_LEFT_PARENTHESIS,
 	TT_RIGHT_PARENTHESIS,
 	TT_SEMICOLON,
-	// Quotes // TODO: figure out if we handle left-right quotes separately
-	TT_LEFT_SQUOTE,
-	//TT_RIGHT_SQUOTE,
-	TT_LEFT_DQUOTE,
-	//TT_RIGHT_DQUOTE,
-	TT_LEFT_REV_QUOTE,
-	//TT_RIGHT_REV_QUOTED,
+	// Quotes
+	TT_SQUOTE,
+	TT_DQUOTE,
+	TT_BQUOTE,
 	// Redirections
 	TT_REDIR_OUT,
 	TT_REDIR_APPEND,
@@ -68,6 +63,8 @@ typedef enum e_token_type
 	TT_REDIR_HDOC,
 	// String
 	TT_STRING,
+	// Command
+	TT_COMMAND,
 }	t_token_type;
 
 typedef enum e_expr_type
@@ -99,7 +96,8 @@ struct s_prompt
 };
 
 /**
- * Variable value is NULL unless type is TT_STRING.
+ * Variable value is NULL unless type is
+ * TT_STRING, TT_SQUOTE, TT_DQUOTE, TT_REV_QUOTE.
  */
 struct s_token
 {
@@ -119,7 +117,10 @@ struct s_expr
 	char			*cmd_name; // ft_strcmp(argv[0], cmd_name); -> true
 	int				fd_in;
 	int				fd_out;
-	t_expr			*next;
+	union {
+		t_expr		*expr;
+		t_token		*token;
+	} next;
 };
 
 struct s_minishell

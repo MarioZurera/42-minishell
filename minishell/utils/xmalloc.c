@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_internal.c                                    :+:      :+:    :+:   */
+/*   xmalloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aflorido <aflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 09:44:29 by aflorido          #+#    #+#             */
-/*   Updated: 2024/10/06 18:00:06 by aflorido         ###   ########.fr       */
+/*   Created: 2024/10/06 17:57:29 by aflorido          #+#    #+#             */
+/*   Updated: 2024/10/06 17:57:31 by aflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_internal(t_ms *ms)
+/**
+ * malloc with error handling (exit on failure)
+ */
+void	*xmalloc(size_t size)
 {
-	ms->internals = xmalloc(sizeof(char **));
-	ms->internals[0] = NULL;
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (!ptr)
+	{
+		perror("malloc failed");
+		exit(1);
+	}
+	return (ptr);
 }
