@@ -29,6 +29,26 @@ static char *ft_get_variable(char *str)
 	return (ft_substr(str, 0, i));
 }
 
+static void	replace_variable(t_token *curr, int *i, t_ms *ms)
+{
+	char	*variable_name;
+	char	*variable_value;
+	char	*new_value;
+
+	variable_name = ft_get_variable(curr->value + *i + 1);
+	if (variable_name == NULL)
+		return ;
+	variable_value = get_internal(variable_name, ms)
+		|| get_env(variable_name);
+	if (variable_value == NULL)
+		variable_value = "";
+	new_value = ft_strjoin_free(ft_substr(curr->value, 0, *i), variable_value, 1, 0);
+	*i += len(variable_name);
+	free(variable_name);
+	new_value = ft_strjoin_free(new_value, curr->value + *i + 1, 1, 0);
+	curr->value = new_value;
+}
+
 /**
  * @brief Changes variable names in string tokens to their values.
  * 
@@ -38,9 +58,6 @@ static char *ft_get_variable(char *str)
 void	interpret_variables(t_token *token, t_ms *ms)
 {
 	t_token	*curr;
-	char	*variable_name;
-	char	*variable_value;
-	char	*new_token_value;
 	int		i;
 
 	curr = token;
@@ -52,20 +69,7 @@ void	interpret_variables(t_token *token, t_ms *ms)
 		while (curr->value && curr->value[i] != '\0')
 		{
 			if (curr->value[i] == '$' && (i == 0 || curr->value[i - 1] != '\\'))
-			{
-				variable_name = ft_get_variable(curr->value + i + 1);
-				if (variable_name != NULL)
-				{
-					variable_value = get_internal(variable_name, ms);
-					if (variable_value == NULL)
-						variable_value = "";
-					new_token_value = ft_strjoin_free(ft_substr(curr->value, 0, i), variable_value, 1, 0);
-					i += ft_strlen(variable_name);
-					free(variable_name);
-					new_token_value = ft_strjoin_free(new_token_value, curr->value + i + 1, 1, 0);
-					curr->value = new_token_value;
-				}
-			}
+				replace_variable(curr, &i, ms);
 			++i;
 		}
 		curr = curr->next;
