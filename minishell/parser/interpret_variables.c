@@ -20,6 +20,8 @@ static char *ft_get_variable(char *str)
 	int		i;
 
 	i = 0;
+	if (str[i] != '\0' && ft_strchr("0123456789@*#-$?!", str[i]) != NULL)
+		return (ft_substr(str, 0, 1));
 	while (str[i] != '\0' && (ft_isalnum(str[i]) || str[i] == '_'))
 		++i;
 	if (i == 0)
@@ -28,49 +30,44 @@ static char *ft_get_variable(char *str)
 }
 
 /**
- * Changes variables in string tokens to their values.
- * A variable is any string starting with a $, unless it is escaped
- * or in single quotes (previous token is a TT_LEFT_SQUOTE).
+ * @brief Changes variable names in string tokens to their values.
+ * 
+ * A variable is any string starting with an unescaped $,
+ * within a TT_STRING or TT_DQUOTE token.
  */
 void	interpret_variables(t_token *token, t_ms *ms)
 {
-	t_token	*prev;
-	t_token	*current;
+	t_token	*curr;
 	char	*variable_name;
 	char	*variable_value;
-	char	*token_value;
 	char	*new_token_value;
 	int		i;
 
-	prev = NULL;
-	current = token;
-	while (current)
+	curr = token;
+	while (curr != NULL)
 	{
-		if (current->type == TT_STRING)
+		if (curr->type != TT_STRING && curr->type != TT_DQUOTE)
+			continue ;
+		i = 0;
+		while (curr->value && curr->value[i] != '\0')
 		{
-			token_value = current->value;
-			i = 0;
-			while (token_value[i] != '\0')
+			if (curr->value[i] == '$' && (i == 0 || curr->value[i - 1] != '\\'))
 			{
-				if (token_value[i] == '$' && (i == 0 || token_value[i - 1] != '\\'))
+				variable_name = ft_get_variable(curr->value + i + 1);
+				if (variable_name != NULL)
 				{
-					variable_name = ft_get_variable(token_value + i + 1);
-					if (variable_name != NULL)
-					{
-						variable_value = get_internal(variable_name, ms);
-						if (variable_value == NULL)
-							variable_value = "";
-						new_token_value = ft_strjoin_free(ft_substr(token_value, 0, i), variable_value, 1, 0);
-						i += ft_strlen(variable_name);
-						free(variable_name);
-						new_token_value = ft_strjoin_free(new_token_value, token_value + i + 1, 1, 0);
-						current->value = new_token_value;
-					}
+					variable_value = get_internal(variable_name, ms);
+					if (variable_value == NULL)
+						variable_value = "";
+					new_token_value = ft_strjoin_free(ft_substr(curr->value, 0, i), variable_value, 1, 0);
+					i += ft_strlen(variable_name);
+					free(variable_name);
+					new_token_value = ft_strjoin_free(new_token_value, curr->value + i + 1, 1, 0);
+					curr->value = new_token_value;
 				}
-				++i;
 			}
+			++i;
 		}
-		prev = current;
-		current = current->next;
+		curr = curr->next;
 	}
 }

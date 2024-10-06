@@ -1,7 +1,7 @@
 #include "minishell.h"
 
 /* Eliminar TT_Space */
-// Quitar espacios
+// Quitar espacios -> parse_spaces(tokens);
 
 /* String Quotes y Dquotes */
 // interpretar variables
@@ -22,8 +22,8 @@
 
 t_expr	*parser(t_token *tokens, t_ms *ms)
 {
-	aijvsdibsd(tokens, ms);
-	//interpret_variables(tokens, ms);
+	parse_spaces(tokens);
+	interpret_variables(tokens, ms);
 	// wildcard(tokens, ms); //TODO: no tengo idea de como hacer esto
 	// set_in_out(tokens, ms); //TODO: hmmm
 	//join_commands(tokens);

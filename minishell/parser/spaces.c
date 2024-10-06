@@ -14,7 +14,7 @@ static int is_stringish_token(t_token *token)
  * Spaces are unnecessary when they don't separate kinds of strings
  * (like TT_STRING, TT_SQUOTE, TT_DQUOTE, TT_BQUOTE).
  */
-t_token *aijvsdibsd(t_token *tokens, t_ms *ms)
+t_token *parse_spaces(t_token *tokens)
 {
     t_token *prev;
     t_token *curr;
