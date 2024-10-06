@@ -6,7 +6,7 @@
 /* String Quotes y Dquotes */
 // interpretar variables
 // wildcard
-// Unir strings (quitar spaces restantes entre Strings, entonces:
+// Unir strings (quitar spaces restantes entre Strings), entonces:
 //	FASE 0: Dquote -> String -> Space -> String
 // 	FASE 1: Dquote+String -> Space -> String
 // 	FASE 2: String(Dquote+String) -> String
@@ -22,9 +22,7 @@
 
 t_expr	*parser(t_token *tokens, t_ms *ms)
 {
-	t_expr *expr;
-
-	expr = NULL;
+	aijvsdibsd(tokens, ms);
 	//interpret_variables(tokens, ms);
 	// wildcard(tokens, ms); //TODO: no tengo idea de como hacer esto
 	// set_in_out(tokens, ms); //TODO: hmmm

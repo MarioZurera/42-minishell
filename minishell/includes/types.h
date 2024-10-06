@@ -34,7 +34,7 @@ typedef struct s_minishell	t_ms;
  *  TT_SEMICOLON:			;
  *  TT_SQUOTE:				single-quote (')
  *  TT_DQUOTE:				double-quote (")
- *  TT_REV_QUOTED:			reverse-quote (`)
+ *  TT_BQUOTED:				reverse-quote (`)
  * 	TT_REDIR_OUT:			>
  * 	TT_REDIR_APPEND:		>>
  * 	TT_REDIR_IN:			<
